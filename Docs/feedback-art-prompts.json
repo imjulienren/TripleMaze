@@ -1,0 +1,15 @@
+{
+  "tool": "built-in image_gen",
+  "prompts": [
+    "Use case: logo-brand. Asset type: mobile puzzle game achievement callout, transparent PNG. Exact text verbatim: \"Good\". Single word on ONE line, large readable chunky rounded italic 3D lettering, mint emerald and ivory polished enamel faces, gold beveled rim, navy extrusion outline, refined highlights. Premium joyful casual puzzle game, luxurious but legible on a small mobile screen. Tiny restrained stars at the sides. The word is the sole subject. Compact wide silhouette, minimal padding, no plaque or banner, no extra text, no scene, no background, no watermark. Genuinely transparent background. Typography must spell Good exactly.",
+    "Use case: logo-brand. Asset type: mobile puzzle game achievement callout, transparent PNG. Exact text verbatim: \"Great\". Single word on ONE line, large readable chunky rounded italic 3D lettering, cyan sky blue and ivory polished enamel faces, gold beveled rim, navy extrusion outline, refined highlights. Premium joyful casual puzzle game, luxurious but legible on a small mobile screen. Tiny restrained stars at the sides. The word is the sole subject. Compact wide silhouette, minimal padding, no plaque or banner, no extra text, no scene, no background, no watermark. Genuinely transparent background. Typography must spell Great exactly.",
+    "Use case: logo-brand. Asset type: mobile puzzle game achievement callout, transparent PNG. Exact text verbatim: \"Perfect\". Single word on ONE line, large readable chunky rounded italic 3D lettering, warm gold and cream polished enamel faces, gold beveled rim, navy extrusion outline, refined highlights. Premium joyful casual puzzle game, luxurious but legible on a small mobile screen. Tiny restrained stars at the sides. The word is the sole subject. Compact wide silhouette, minimal padding, no plaque or banner, no extra text, no scene, no background, no watermark. Genuinely transparent background. Typography must spell Perfect exactly.",
+    "Use case: logo-brand. Asset type: mobile puzzle game achievement callout, transparent PNG. Exact text verbatim: \"Excellent\". Single word on ONE line, large readable chunky rounded italic 3D lettering, lavender violet and gold polished enamel faces, gold beveled rim, navy extrusion outline, refined highlights. Premium joyful casual puzzle game, luxurious but legible on a small mobile screen. Tiny restrained stars at the sides. The word is the sole subject. Compact wide silhouette, minimal padding, no plaque or banner, no extra text, no scene, no background, no watermark. Genuinely transparent background. Typography must spell Excellent exactly."
+  ],
+  "outputs": [
+    "Assets/TripleMaze/Resources/Polish/feedback-good.png",
+    "Assets/TripleMaze/Resources/Polish/feedback-great.png",
+    "Assets/TripleMaze/Resources/Polish/feedback-perfect.png",
+    "Assets/TripleMaze/Resources/Polish/feedback-excellent.png"
+  ]
+}

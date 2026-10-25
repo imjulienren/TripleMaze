@@ -1,0 +1,9 @@
+{
+  "levels": 30,
+  "minArrows": 96,
+  "maxArrows": 204,
+  "averageArrows": 156.5,
+  "minimumCoverage": 0.982758641242981,
+  "averageCoverage": 0.9961156884829203,
+  "maximumCoverage": 1.0
+}

@@ -1,0 +1,91 @@
+{
+  "designResolution": {
+    "width": 720,
+    "height": 1280
+  },
+  "coordinateSystem": "preview top-left origin; Unity Y = 640 - preview Y",
+  "menu": {
+    "logoWidth": 650,
+    "logoY": 260,
+    "watermarkWidth": 1150,
+    "watermarkY": 720,
+    "watermarkOpacity": 12,
+    "watermarkRotation": -12,
+    "buttonWidth": 252,
+    "buttonY": 990
+  },
+  "feedback": {
+    "width": 239,
+    "y": 175
+  },
+  "changes": [
+    "menu.logoY: 410 -> 260",
+    "menu.buttonWidth: 566 -> 400",
+    "result.titleSize: 48 -> 60",
+    "result.crownY: 457 -> 406",
+    "result.buttonWidth: 566 -> 400",
+    "feedback.width: 320 -> 202"
+  ],
+  "source": "User submitted menu and result layout changes from Triple Maze UI preview, 2026-10-25",
+  "result": {
+    "titleSize": 60,
+    "titleY": 204,
+    "crownWidth": 264,
+    "crownY": 406,
+    "starsScale": 100,
+    "starsY": 616,
+    "statsY": 773,
+    "buttonWidth": 230,
+    "buttonsY": 947
+  },
+  "elements": {
+    "resultLevel": {
+      "visible": true,
+      "x": 0,
+      "y": 0,
+      "scale": 200
+    },
+    "resultStats": {
+      "visible": false,
+      "x": 0,
+      "y": 0,
+      "scale": 100
+    },
+    "gameProgress": {
+      "visible": false,
+      "x": 0,
+      "y": 0,
+      "scale": 100
+    },
+    "gameHint": {
+      "visible": true,
+      "x": 0,
+      "y": 0,
+      "scale": 80
+    },
+    "gameUndo": {
+      "visible": true,
+      "x": 0,
+      "y": 0,
+      "scale": 80
+    },
+    "menuSound": {
+      "visible": false,
+      "x": 0,
+      "y": 0,
+      "scale": 100
+    },
+    "resultGlow": {
+      "visible": true,
+      "x": 0,
+      "y": -97,
+      "scale": 60
+    },
+    "resultStars": {
+      "visible": true,
+      "x": 0,
+      "y": 88,
+      "scale": 100
+    }
+  }
+}

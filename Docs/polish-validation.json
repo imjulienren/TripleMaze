@@ -1,0 +1,17 @@
+{
+  "date": "2026-10-25",
+  "unity": "2022.3.62f3",
+  "editMode": {
+    "assembly": "TripleMaze.Tests",
+    "passed": 12,
+    "failed": 0,
+    "jobId": "3dc87bcf6ad34f199207e826ba25fea8"
+  },
+  "playMode": {
+    "assembly": "TripleMaze.PlayTests",
+    "passed": 7,
+    "failed": 0,
+    "jobId": "62d677bf2acb4d04be81028173d1b5d8"
+  },
+  "deviceVerification": false
+}

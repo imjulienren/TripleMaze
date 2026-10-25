@@ -1,0 +1,22 @@
+[
+  {
+    "word": "good",
+    "audio": "/Users/julienren/unity-arrow-smash/ArrowSmash/Assets/ArrowSmash/Bundles/Audios/sfx_combo_good.wav",
+    "image": "TripleMaze/Assets/TripleMaze/Resources/Polish/feedback-good.png"
+  },
+  {
+    "word": "great",
+    "audio": "/Users/julienren/unity-arrow-smash/ArrowSmash/Assets/ArrowSmash/Bundles/Audios/sfx_combo_great.wav",
+    "image": "TripleMaze/Assets/TripleMaze/Resources/Polish/feedback-great.png"
+  },
+  {
+    "word": "perfect",
+    "audio": "/Users/julienren/unity-arrow-smash/ArrowSmash/Assets/ArrowSmash/Bundles/Audios/sfx_combo_perfect.wav",
+    "image": "TripleMaze/Assets/TripleMaze/Resources/Polish/feedback-perfect.png"
+  },
+  {
+    "word": "excellent",
+    "audio": "/Users/julienren/unity-arrow-smash/ArrowSmash/Assets/ArrowSmash/Bundles/Audios/sfx_combo_excellent.wav",
+    "image": "TripleMaze/Assets/TripleMaze/Resources/Polish/feedback-excellent.png"
+  }
+]
