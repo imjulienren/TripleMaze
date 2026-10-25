@@ -126,7 +126,8 @@ namespace TripleMaze.Editor.Generation
                 EditorGUILayout.HelpBox("按轮廓自动决定箭头数量，没有数量上限。保留原图色块，用朝向、出口和遮挡层数调节难度；三消压力仅作参考。",MessageType.None);
             }
             else{settings.arrowCount=EditorGUILayout.IntSlider("目标箭头数",settings.arrowCount,3,60);settings.arrowCount=Math.Max(3,settings.arrowCount/3*3);}
-            settings.colorCount=EditorGUILayout.IntSlider("目标颜色数",settings.colorCount,1,6);settings.slots=EditorGUILayout.IntSlider("收集槽容量",settings.slots,3,9);
+            settings.colorCount=EditorGUILayout.IntSlider(settings.fillImage?"颜色类别上限":"目标颜色数",settings.colorCount,1,settings.fillImage?5:6);settings.slots=EditorGUILayout.IntSlider("收集槽容量",settings.slots,3,9);
+            if(settings.fillImage)EditorGUILayout.HelpBox("相近的深浅色自动合并为同一消除编号，避免看着相似却不能消除。",MessageType.None);
             advanced=EditorGUILayout.Foldout(advanced,"高级参数：颜色、覆盖率、种子与搜索",true);
             if(advanced)
             {

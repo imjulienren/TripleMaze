@@ -23,7 +23,7 @@ namespace TripleMaze
         public float Travel => Moving>=0?Motions[Moving].Travel:0;
         public int ImpactTarget { get { foreach(var motion in Motions.Values)if(motion.ImpactTarget>=0)return motion.ImpactTarget;return -1; } }
         public int Hint=-1, Pressed=-1;
-        public float WinWave=-1, Reveal=1;
+        public float CompletionReveal=0, Reveal=1;
         public float ContactTravel => Mathf.Max(0,.88f-Mathf.Clamp(Scale*.155f,4.2f,7.6f)*.5f/Scale);
         public System.Action<int> PressedArrow;
         readonly Dictionary<int,List<Vector2>> cached=new Dictionary<int,List<Vector2>>();
@@ -55,7 +55,7 @@ namespace TripleMaze
         public Vector2 Head(int index)=>Point(Model.Level.initialSegments[index].points[0]);
         public float ExitDistance(int index)
         {
-            // Begin the tray flight when the visible tip reaches the clipping edge, including zoom and pan.
+            // Trigger the tray pop when the visible tip reaches the clipping edge, including zoom and pan.
             var head=Head(index);var dir=PuzzleModel.Direction(Model.Level.initialSegments[index]);
             var bounds=rectTransform.rect;
             float pixels=dir.x>0?bounds.xMax-head.x:dir.x<0?head.x-bounds.xMin:dir.y>0?head.y-bounds.yMin:bounds.yMax-head.y;
@@ -63,10 +63,19 @@ namespace TripleMaze
             return Mathf.Max(0,(pixels-tip)/Scale);
         }
         public void SetZoom(float value){Zoom=Mathf.Clamp(value,1,3);if(Zoom==1)pan=Vector2.zero;Redraw();}
+        public System.Collections.IEnumerator RestoreOverview(float duration)
+        {
+            float startZoom=Zoom;var startPan=pan;
+            for(float t=0;t<duration;t+=Time.deltaTime)
+            {
+                float p=Mathf.SmoothStep(0,1,t/duration);Zoom=Mathf.Lerp(startZoom,1,p);pan=Vector2.Lerp(startPan,Vector2.zero,p);Redraw();yield return null;
+            }
+            Zoom=1;pan=Vector2.zero;Redraw();
+        }
         public void OnBeginDrag(PointerEventData e){suppressClickUntil=Time.unscaledTime+.25f;}
         public void OnDrag(PointerEventData e)
-        {if(Zoom<=1)return;RectTransformUtility.ScreenPointToLocalPointInRectangle(rectTransform,e.position,e.pressEventCamera,out var current);RectTransformUtility.ScreenPointToLocalPointInRectangle(rectTransform,e.position-e.delta,e.pressEventCamera,out var previous);pan+=current-previous;pan=Vector2.Max(-rectTransform.rect.size*(Zoom-1)*.5f,Vector2.Min(rectTransform.rect.size*(Zoom-1)*.5f,pan));suppressClickUntil=Time.unscaledTime+.25f;Redraw();}
-        public void OnScroll(PointerEventData e){SetZoom(Zoom+e.scrollDelta.y*.15f);}
+        {if(!raycastTarget || Zoom<=1)return;RectTransformUtility.ScreenPointToLocalPointInRectangle(rectTransform,e.position,e.pressEventCamera,out var current);RectTransformUtility.ScreenPointToLocalPointInRectangle(rectTransform,e.position-e.delta,e.pressEventCamera,out var previous);pan+=current-previous;pan=Vector2.Max(-rectTransform.rect.size*(Zoom-1)*.5f,Vector2.Min(rectTransform.rect.size*(Zoom-1)*.5f,pan));suppressClickUntil=Time.unscaledTime+.25f;Redraw();}
+        public void OnScroll(PointerEventData e){if(!raycastTarget)return;SetZoom(Zoom+e.scrollDelta.y*.15f);}
         void Update()
         {
             EnsureRenderLayers();

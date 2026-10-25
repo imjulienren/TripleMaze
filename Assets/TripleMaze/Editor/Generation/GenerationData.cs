@@ -9,6 +9,7 @@ namespace TripleMaze.Editor.Generation
     {
         public int width=20,height=24;
         public string source="手绘轮廓";
+        public string sourceImagePng="";
         public List<bool> mask=new List<bool>();
         public List<Color> samples=new List<Color>();
         public List<Color> palette=new List<Color>();
@@ -22,8 +23,8 @@ namespace TripleMaze.Editor.Generation
     [Serializable] public class GenerationSettings
     {
         public bool fillImage=true;
-        public int imageArrowLength=5;
-        public int seed=12345,arrowCount=30,colorCount=6,slots=7,attempts=24,candidateCount=4,probeRuns=32;
+        public int imageArrowLength=6;
+        public int seed=12345,arrowCount=30,colorCount=5,slots=7,attempts=24,candidateCount=4,probeRuns=32;
         public float arrowTarget=50,matchTarget=45,tolerance=15,colorFidelity=.75f,coverage=.8f;
         public bool allowExtraColors=true,brightenDarkColors=true;
         public string preset="标准";
@@ -32,7 +33,7 @@ namespace TripleMaze.Editor.Generation
             string[] names={"入门","轻松","标准","困难","挑战"};preset=names[index];
             arrowCount=new[]{12,18,30,42,54}[index];colorCount=new[]{3,4,4,5,6}[index];
             arrowTarget=new[]{18,32,50,68,82}[index];matchTarget=new[]{0,20,45,65,80}[index];
-            if(fillImage){colorCount=6;arrowTarget=new[]{40,50,60,72,84}[index];}
+            if(fillImage){colorCount=5;arrowTarget=new[]{40,50,60,72,84}[index];}
         }
         public GenerationSettings Copy()=>JsonUtility.FromJson<GenerationSettings>(JsonUtility.ToJson(this));
     }

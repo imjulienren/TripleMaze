@@ -87,5 +87,8 @@
       "y": 88,
       "scale": 100
     }
+  },
+  "game": {
+    "toolsWidth": 170
   }
 }

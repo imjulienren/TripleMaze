@@ -41,7 +41,7 @@ namespace TripleMaze.Editor.Generation
         }
         static LevelData Geometry(GenerationTemplate t,GenerationSettings cfg,System.Random random)
         {
-            var level=new LevelData{gridWidth=t.width,gridHeight=t.height,slotCapacity=cfg.slots};var points=new List<Vector2Int>();for(int y=0;y<t.height;y++)for(int x=0;x<t.width;x++)if(t.Contains(x,y))points.Add(new Vector2Int(x,y));
+            var level=new LevelData{gridWidth=t.width,gridHeight=t.height,slotCapacity=cfg.slots,sourceImagePng=t.sourceImagePng};var points=new List<Vector2Int>();for(int y=0;y<t.height;y++)for(int x=0;x<t.width;x++)if(t.Contains(x,y))points.Add(new Vector2Int(x,y));
             var occupied=new HashSet<Vector2Int>();int requested=Math.Min(60,Math.Max(3,cfg.arrowCount/3*3));
             int average=Mathf.Clamp(Mathf.RoundToInt(points.Count*cfg.coverage/requested),2,38);
             for(int arrow=0;arrow<requested;arrow++)

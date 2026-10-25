@@ -15,7 +15,7 @@ namespace TripleMaze
             var parent = (RectTransform)phone.parent;
             if (Screen.width <= 0 || Screen.height <= 0) return;
 
-            // 安全区只决定整个手机画布的位置和等比缩放，不改变页面内部尺寸。
+            // 内容保持等比缩放；背景覆盖全屏，交互区域单独遵守安全区。
             var safe = Screen.safeArea;
             if (safe.width <= 0 || safe.height <= 0)
                 safe = new Rect(0, 0, Screen.width, Screen.height);
@@ -23,9 +23,21 @@ namespace TripleMaze
             var available = Vector2.Scale(safe.size, pixelsToCanvas);
             float scale = Mathf.Min(available.x / DesignSize.x, available.y / DesignSize.y);
             phone.anchorMin = phone.anchorMax = new Vector2(.5f, .5f);
-            phone.sizeDelta = DesignSize;
-            phone.anchoredPosition = Vector2.Scale(safe.center - new Vector2(Screen.width, Screen.height) * .5f, pixelsToCanvas);
+            phone.sizeDelta = parent.rect.size / scale;
+            phone.anchoredPosition = Vector2.zero;
             phone.localScale = new Vector3(scale, scale, 1);
+
+            // 页面在运行时重建，因此每次刷新都取当前的安全区容器。
+            for (int i = 0; i < phone.childCount; i++)
+            {
+                var page = phone.GetChild(i);
+                var content = page.Find("SafeArea") as RectTransform;
+                if (!content) continue;
+                content.sizeDelta = available / scale;
+                content.anchoredPosition = Vector2.Scale(
+                    safe.center - new Vector2(Screen.width, Screen.height) * .5f,
+                    pixelsToCanvas) / scale;
+            }
         }
     }
 }

@@ -1,2475 +1,1673 @@
 {
-  "levelId": 19,
-  "description": "仙人掌",
-  "gridWidth": 40,
-  "gridHeight": 40,
-  "slotCapacity": 7,
-  "imageFilled": true,
-  "initialSegments": [
-    {
-      "colorDisplayIndex": 2,
-      "points": [
-        {
-          "x": 25,
-          "y": 2
-        },
-        {
-          "x": 24,
-          "y": 2
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 2,
-      "points": [
-        {
-          "x": 12,
-          "y": 6
-        },
-        {
-          "x": 13,
-          "y": 6
-        },
-        {
-          "x": 13,
-          "y": 7
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 13,
-          "y": 5
-        },
-        {
-          "x": 17,
-          "y": 5
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 30,
-          "y": 27
-        },
-        {
-          "x": 30,
-          "y": 21
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 22,
-          "y": 38
-        },
-        {
-          "x": 15,
-          "y": 38
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 25,
-          "y": 37
-        },
-        {
-          "x": 25,
-          "y": 34
-        },
-        {
-          "x": 22,
-          "y": 34
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 26,
-          "y": 36
-        },
-        {
-          "x": 26,
-          "y": 30
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 26,
-          "y": 29
-        },
-        {
-          "x": 26,
-          "y": 23
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 13,
-          "y": 36
-        },
-        {
-          "x": 13,
-          "y": 29
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 2,
-          "y": 26
-        },
-        {
-          "x": 8,
-          "y": 26
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 24,
-          "y": 36
-        },
-        {
-          "x": 18,
-          "y": 36
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 24,
-          "y": 35
-        },
-        {
-          "x": 18,
-          "y": 35
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 17,
-          "y": 37
-        },
-        {
-          "x": 17,
-          "y": 31
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 23,
-          "y": 38
-        },
-        {
-          "x": 23,
-          "y": 37
-        },
-        {
-          "x": 18,
-          "y": 37
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 24,
-          "y": 38
-        },
-        {
-          "x": 24,
-          "y": 37
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 13,
-          "y": 9
-        },
-        {
-          "x": 19,
-          "y": 9
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 13,
-          "y": 8
-        },
-        {
-          "x": 18,
-          "y": 8
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 30,
-          "y": 5
-        },
-        {
-          "x": 30,
-          "y": 10
-        },
-        {
-          "x": 29,
-          "y": 10
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 29,
-          "y": 7
-        },
-        {
-          "x": 29,
-          "y": 9
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 20,
-          "y": 0
-        },
-        {
-          "x": 20,
-          "y": 6
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 2,
-          "y": 16
-        },
-        {
-          "x": 2,
-          "y": 18
-        },
-        {
-          "x": 6,
-          "y": 18
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 13,
-          "y": 10
-        },
-        {
-          "x": 13,
-          "y": 16
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 20,
-          "y": 34
-        },
-        {
-          "x": 20,
-          "y": 28
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 21,
-          "y": 34
-        },
-        {
-          "x": 21,
-          "y": 28
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 37,
-          "y": 13
-        },
-        {
-          "x": 31,
-          "y": 13
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 37,
-          "y": 22
-        },
-        {
-          "x": 37,
-          "y": 16
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 24,
-          "y": 4
-        },
-        {
-          "x": 24,
-          "y": 10
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 25,
-          "y": 4
-        },
-        {
-          "x": 25,
-          "y": 9
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 26,
-          "y": 5
-        },
-        {
-          "x": 26,
-          "y": 9
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 16,
-          "y": 36
-        },
-        {
-          "x": 14,
-          "y": 36
-        },
-        {
-          "x": 14,
-          "y": 32
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 14,
-          "y": 37
-        },
-        {
-          "x": 16,
-          "y": 37
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 11,
-          "y": 26
-        },
-        {
-          "x": 11,
-          "y": 32
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 12,
-          "y": 26
-        },
-        {
-          "x": 12,
-          "y": 32
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 2,
-          "y": 24
-        },
-        {
-          "x": 8,
-          "y": 24
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 2,
-          "y": 25
-        },
-        {
-          "x": 7,
-          "y": 25
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 8,
-          "y": 25
-        },
-        {
-          "x": 11,
-          "y": 25
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 4,
-          "y": 14
-        },
-        {
-          "x": 9,
-          "y": 14
-        },
-        {
-          "x": 9,
-          "y": 15
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 5,
-          "y": 13
-        },
-        {
-          "x": 7,
-          "y": 13
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 10,
-          "y": 15
-        },
-        {
-          "x": 10,
-          "y": 20
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 16,
-          "y": 35
-        },
-        {
-          "x": 16,
-          "y": 29
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 15,
-          "y": 35
-        },
-        {
-          "x": 15,
-          "y": 30
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 14,
-          "y": 31
-        },
-        {
-          "x": 14,
-          "y": 30
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 5,
-          "y": 15
-        },
-        {
-          "x": 5,
-          "y": 17
-        },
-        {
-          "x": 3,
-          "y": 17
-        },
-        {
-          "x": 3,
-          "y": 15
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 4,
-          "y": 15
-        },
-        {
-          "x": 4,
-          "y": 16
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 27,
-          "y": 27
-        },
-        {
-          "x": 27,
-          "y": 21
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 18,
-          "y": 34
-        },
-        {
-          "x": 19,
-          "y": 34
-        },
-        {
-          "x": 19,
-          "y": 29
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 18,
-          "y": 33
-        },
-        {
-          "x": 18,
-          "y": 28
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 19,
-          "y": 28
-        },
-        {
-          "x": 19,
-          "y": 22
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 17,
-          "y": 30
-        },
-        {
-          "x": 17,
-          "y": 25
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 18,
-          "y": 27
-        },
-        {
-          "x": 18,
-          "y": 21
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 34,
-          "y": 5
-        },
-        {
-          "x": 34,
-          "y": 11
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 35,
-          "y": 5
-        },
-        {
-          "x": 35,
-          "y": 10
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 36,
-          "y": 6
-        },
-        {
-          "x": 36,
-          "y": 11
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 35,
-          "y": 11
-        },
-        {
-          "x": 35,
-          "y": 12
-        },
-        {
-          "x": 37,
-          "y": 12
-        },
-        {
-          "x": 37,
-          "y": 10
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 34,
-          "y": 12
-        },
-        {
-          "x": 32,
-          "y": 12
-        },
-        {
-          "x": 32,
-          "y": 8
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 2,
-      "points": [
-        {
-          "x": 38,
-          "y": 8
-        },
-        {
-          "x": 38,
-          "y": 9
-        },
-        {
-          "x": 37,
-          "y": 9
-        },
-        {
-          "x": 37,
-          "y": 7
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 25,
-          "y": 30
-        },
-        {
-          "x": 22,
-          "y": 30
-        },
-        {
-          "x": 22,
-          "y": 33
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 15,
-          "y": 2
-        },
-        {
-          "x": 19,
-          "y": 2
-        },
-        {
-          "x": 19,
-          "y": 4
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 17,
-          "y": 0
-        },
-        {
-          "x": 19,
-          "y": 0
-        },
-        {
-          "x": 19,
-          "y": 1
-        },
-        {
-          "x": 16,
-          "y": 1
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 30,
-          "y": 20
-        },
-        {
-          "x": 30,
-          "y": 14
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 3,
-          "y": 19
-        },
-        {
-          "x": 3,
-          "y": 23
-        },
-        {
-          "x": 5,
-          "y": 23
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 2,
-          "y": 23
-        },
-        {
-          "x": 2,
-          "y": 21
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 8,
-          "y": 15
-        },
-        {
-          "x": 8,
-          "y": 21
-        },
-        {
-          "x": 9,
-          "y": 21
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 9,
-          "y": 20
-        },
-        {
-          "x": 9,
-          "y": 16
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 33,
-          "y": 26
-        },
-        {
-          "x": 33,
-          "y": 20
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 34,
-          "y": 25
-        },
-        {
-          "x": 34,
-          "y": 19
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 36,
-          "y": 21
-        },
-        {
-          "x": 35,
-          "y": 21
-        },
-        {
-          "x": 35,
-          "y": 24
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 36,
-          "y": 23
-        },
-        {
-          "x": 36,
-          "y": 22
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 19,
-          "y": 5
-        },
-        {
-          "x": 19,
-          "y": 8
-        },
-        {
-          "x": 22,
-          "y": 8
-        },
-        {
-          "x": 22,
-          "y": 9
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 4,
-          "y": 19
-        },
-        {
-          "x": 4,
-          "y": 22
-        },
-        {
-          "x": 7,
-          "y": 22
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 6,
-          "y": 23
-        },
-        {
-          "x": 10,
-          "y": 23
-        },
-        {
-          "x": 10,
-          "y": 24
-        },
-        {
-          "x": 9,
-          "y": 24
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 2,
-      "points": [
-        {
-          "x": 8,
-          "y": 22
-        },
-        {
-          "x": 10,
-          "y": 22
-        },
-        {
-          "x": 10,
-          "y": 21
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 6,
-          "y": 15
-        },
-        {
-          "x": 7,
-          "y": 15
-        },
-        {
-          "x": 7,
-          "y": 20
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 6,
-          "y": 16
-        },
-        {
-          "x": 6,
-          "y": 17
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 5,
-          "y": 19
-        },
-        {
-          "x": 5,
-          "y": 21
-        },
-        {
-          "x": 7,
-          "y": 21
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 6,
-          "y": 19
-        },
-        {
-          "x": 6,
-          "y": 20
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 14,
-          "y": 6
-        },
-        {
-          "x": 18,
-          "y": 6
-        },
-        {
-          "x": 18,
-          "y": 7
-        },
-        {
-          "x": 17,
-          "y": 7
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 14,
-          "y": 7
-        },
-        {
-          "x": 16,
-          "y": 7
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 20,
-          "y": 7
-        },
-        {
-          "x": 23,
-          "y": 7
-        },
-        {
-          "x": 23,
-          "y": 4
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 14,
-          "y": 4
-        },
-        {
-          "x": 18,
-          "y": 4
-        },
-        {
-          "x": 18,
-          "y": 5
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 14,
-          "y": 3
-        },
-        {
-          "x": 18,
-          "y": 3
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 6,
-          "y": 27
-        },
-        {
-          "x": 6,
-          "y": 28
-        },
-        {
-          "x": 3,
-          "y": 28
-        },
-        {
-          "x": 3,
-          "y": 27
-        },
-        {
-          "x": 5,
-          "y": 27
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 2,
-      "points": [
-        {
-          "x": 5,
-          "y": 30
-        },
-        {
-          "x": 6,
-          "y": 30
-        },
-        {
-          "x": 6,
-          "y": 29
-        },
-        {
-          "x": 4,
-          "y": 29
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 20,
-          "y": 27
-        },
-        {
-          "x": 20,
-          "y": 21
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 19,
-          "y": 21
-        },
-        {
-          "x": 19,
-          "y": 16
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 14,
-          "y": 10
-        },
-        {
-          "x": 20,
-          "y": 10
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 20,
-          "y": 9
-        },
-        {
-          "x": 21,
-          "y": 9
-        },
-        {
-          "x": 21,
-          "y": 15
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 2,
-      "points": [
-        {
-          "x": 22,
-          "y": 10
-        },
-        {
-          "x": 23,
-          "y": 10
-        },
-        {
-          "x": 23,
-          "y": 8
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 20,
-          "y": 11
-        },
-        {
-          "x": 20,
-          "y": 17
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 33,
-          "y": 19
-        },
-        {
-          "x": 33,
-          "y": 14
-        },
-        {
-          "x": 32,
-          "y": 14
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 33,
-          "y": 11
-        },
-        {
-          "x": 33,
-          "y": 5
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 33,
-          "y": 4
-        },
-        {
-          "x": 32,
-          "y": 4
-        },
-        {
-          "x": 32,
-          "y": 7
-        },
-        {
-          "x": 31,
-          "y": 7
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 31,
-          "y": 5
-        },
-        {
-          "x": 31,
-          "y": 6
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 31,
-          "y": 8
-        },
-        {
-          "x": 31,
-          "y": 10
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 26,
-          "y": 10
-        },
-        {
-          "x": 26,
-          "y": 16
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 25,
-          "y": 10
-        },
-        {
-          "x": 25,
-          "y": 15
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 10,
-          "y": 30
-        },
-        {
-          "x": 7,
-          "y": 30
-        },
-        {
-          "x": 7,
-          "y": 27
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 7,
-          "y": 31
-        },
-        {
-          "x": 10,
-          "y": 31
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 14,
-          "y": 11
-        },
-        {
-          "x": 14,
-          "y": 16
-        },
-        {
-          "x": 15,
-          "y": 16
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 15,
-          "y": 11
-        },
-        {
-          "x": 15,
-          "y": 15
-        },
-        {
-          "x": 17,
-          "y": 15
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 28,
-          "y": 20
-        },
-        {
-          "x": 28,
-          "y": 27
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 16,
-          "y": 11
-        },
-        {
-          "x": 19,
-          "y": 11
-        },
-        {
-          "x": 19,
-          "y": 14
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 16,
-          "y": 12
-        },
-        {
-          "x": 18,
-          "y": 12
-        },
-        {
-          "x": 18,
-          "y": 15
-        },
-        {
-          "x": 19,
-          "y": 15
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 32,
-          "y": 15
-        },
-        {
-          "x": 32,
-          "y": 21
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 8,
-          "y": 29
-        },
-        {
-          "x": 8,
-          "y": 27
-        },
-        {
-          "x": 10,
-          "y": 27
-        },
-        {
-          "x": 10,
-          "y": 29
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 9,
-          "y": 26
-        },
-        {
-          "x": 10,
-          "y": 26
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 9,
-          "y": 29
-        },
-        {
-          "x": 9,
-          "y": 28
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 21,
-          "y": 6
-        },
-        {
-          "x": 22,
-          "y": 6
-        },
-        {
-          "x": 22,
-          "y": 1
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 23,
-          "y": 1
-        },
-        {
-          "x": 23,
-          "y": 3
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 22,
-          "y": 0
-        },
-        {
-          "x": 21,
-          "y": 0
-        },
-        {
-          "x": 21,
-          "y": 3
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 21,
-          "y": 4
-        },
-        {
-          "x": 21,
-          "y": 5
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 26,
-          "y": 17
-        },
-        {
-          "x": 26,
-          "y": 22
-        },
-        {
-          "x": 25,
-          "y": 22
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 20,
-          "y": 18
-        },
-        {
-          "x": 20,
-          "y": 20
-        },
-        {
-          "x": 24,
-          "y": 20
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 13,
-          "y": 18
-        },
-        {
-          "x": 14,
-          "y": 18
-        },
-        {
-          "x": 14,
-          "y": 23
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 2,
-      "points": [
-        {
-          "x": 15,
-          "y": 18
-        },
-        {
-          "x": 16,
-          "y": 18
-        },
-        {
-          "x": 16,
-          "y": 17
-        },
-        {
-          "x": 13,
-          "y": 17
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 18,
-          "y": 20
-        },
-        {
-          "x": 18,
-          "y": 16
-        },
-        {
-          "x": 16,
-          "y": 16
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 13,
-          "y": 19
-        },
-        {
-          "x": 13,
-          "y": 25
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 16,
-          "y": 28
-        },
-        {
-          "x": 16,
-          "y": 22
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 17,
-          "y": 24
-        },
-        {
-          "x": 17,
-          "y": 19
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 17,
-          "y": 18
-        },
-        {
-          "x": 17,
-          "y": 17
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 32,
-          "y": 25
-        },
-        {
-          "x": 31,
-          "y": 25
-        },
-        {
-          "x": 31,
-          "y": 19
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 32,
-          "y": 22
-        },
-        {
-          "x": 32,
-          "y": 24
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 16,
-          "y": 21
-        },
-        {
-          "x": 16,
-          "y": 19
-        },
-        {
-          "x": 15,
-          "y": 19
-        },
-        {
-          "x": 15,
-          "y": 22
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 15,
-          "y": 23
-        },
-        {
-          "x": 15,
-          "y": 27
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 14,
-          "y": 24
-        },
-        {
-          "x": 14,
-          "y": 27
-        },
-        {
-          "x": 13,
-          "y": 27
-        },
-        {
-          "x": 13,
-          "y": 26
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 23,
-          "y": 11
-        },
-        {
-          "x": 23,
-          "y": 17
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 24,
-          "y": 17
-        },
-        {
-          "x": 24,
-          "y": 11
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 21,
-          "y": 18
-        },
-        {
-          "x": 25,
-          "y": 18
-        },
-        {
-          "x": 25,
-          "y": 16
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 21,
-          "y": 16
-        },
-        {
-          "x": 22,
-          "y": 16
-        },
-        {
-          "x": 22,
-          "y": 11
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 21,
-          "y": 17
-        },
-        {
-          "x": 22,
-          "y": 17
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 25,
-          "y": 28
-        },
-        {
-          "x": 22,
-          "y": 28
-        },
-        {
-          "x": 22,
-          "y": 25
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 25,
-          "y": 29
-        },
-        {
-          "x": 22,
-          "y": 29
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 21,
-          "y": 27
-        },
-        {
-          "x": 21,
-          "y": 23
-        },
-        {
-          "x": 23,
-          "y": 23
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 22,
-          "y": 24
-        },
-        {
-          "x": 25,
-          "y": 24
-        },
-        {
-          "x": 25,
-          "y": 23
-        },
-        {
-          "x": 24,
-          "y": 23
-        },
-        {
-          "x": 24,
-          "y": 22
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 30,
-          "y": 13
-        },
-        {
-          "x": 29,
-          "y": 13
-        },
-        {
-          "x": 29,
-          "y": 18
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 29,
-          "y": 27
-        },
-        {
-          "x": 29,
-          "y": 21
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 29,
-          "y": 20
-        },
-        {
-          "x": 29,
-          "y": 19
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 34,
-          "y": 14
-        },
-        {
-          "x": 34,
-          "y": 16
-        },
-        {
-          "x": 36,
-          "y": 16
-        },
-        {
-          "x": 36,
-          "y": 14
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 37,
-          "y": 15
-        },
-        {
-          "x": 37,
-          "y": 14
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 35,
-          "y": 15
-        },
-        {
-          "x": 35,
-          "y": 14
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 25,
-          "y": 19
-        },
-        {
-          "x": 25,
-          "y": 21
-        },
-        {
-          "x": 23,
-          "y": 21
-        },
-        {
-          "x": 23,
-          "y": 22
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 23,
-          "y": 25
-        },
-        {
-          "x": 23,
-          "y": 27
-        },
-        {
-          "x": 25,
-          "y": 27
-        },
-        {
-          "x": 25,
-          "y": 25
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 16,
-          "y": 14
-        },
-        {
-          "x": 17,
-          "y": 14
-        },
-        {
-          "x": 17,
-          "y": 13
-        },
-        {
-          "x": 16,
-          "y": 13
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 23,
-          "y": 31
-        },
-        {
-          "x": 25,
-          "y": 31
-        },
-        {
-          "x": 25,
-          "y": 32
-        },
-        {
-          "x": 23,
-          "y": 32
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 2,
-      "points": [
-        {
-          "x": 25,
-          "y": 33
-        },
-        {
-          "x": 23,
-          "y": 33
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 24,
-          "y": 26
-        },
-        {
-          "x": 24,
-          "y": 25
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 36,
-          "y": 20
-        },
-        {
-          "x": 35,
-          "y": 20
-        },
-        {
-          "x": 35,
-          "y": 19
-        },
-        {
-          "x": 36,
-          "y": 19
-        },
-        {
-          "x": 36,
-          "y": 18
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 2,
-      "points": [
-        {
-          "x": 35,
-          "y": 18
-        },
-        {
-          "x": 35,
-          "y": 17
-        },
-        {
-          "x": 36,
-          "y": 17
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 34,
-          "y": 17
-        },
-        {
-          "x": 34,
-          "y": 18
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 2,
-      "points": [
-        {
-          "x": 31,
-          "y": 11
-        },
-        {
-          "x": 30,
-          "y": 11
-        },
-        {
-          "x": 30,
-          "y": 12
-        },
-        {
-          "x": 31,
-          "y": 12
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 29,
-          "y": 12
-        },
-        {
-          "x": 29,
-          "y": 11
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 31,
-          "y": 14
-        },
-        {
-          "x": 31,
-          "y": 18
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 2,
-      "points": [
-        {
-          "x": 1,
-          "y": 20
-        },
-        {
-          "x": 1,
-          "y": 19
-        },
-        {
-          "x": 2,
-          "y": 19
-        },
-        {
-          "x": 2,
-          "y": 20
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 21,
-          "y": 19
-        },
-        {
-          "x": 24,
-          "y": 19
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 2,
-      "points": [
-        {
-          "x": 32,
-          "y": 26
-        },
-        {
-          "x": 32,
-          "y": 27
-        },
-        {
-          "x": 31,
-          "y": 27
-        },
-        {
-          "x": 31,
-          "y": 26
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 2,
-      "points": [
-        {
-          "x": 22,
-          "y": 22
-        },
-        {
-          "x": 21,
-          "y": 22
-        },
-        {
-          "x": 21,
-          "y": 21
-        },
-        {
-          "x": 22,
-          "y": 21
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 2,
-      "points": [
-        {
-          "x": 13,
-          "y": 28
-        },
-        {
-          "x": 14,
-          "y": 28
-        },
-        {
-          "x": 14,
-          "y": 29
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 1,
-      "points": [
-        {
-          "x": 15,
-          "y": 29
-        },
-        {
-          "x": 15,
-          "y": 28
-        }
-      ]
-    },
-    {
-      "colorDisplayIndex": 2,
-      "points": [
-        {
-          "x": 24,
-          "y": 3
-        },
-        {
-          "x": 26,
-          "y": 3
-        }
-      ]
-    }
-  ],
-  "colorPalette": [
-    {
-      "r": 0.46643784642219543,
-      "g": 0.697766125202179,
-      "b": 0.33314499258995056,
-      "a": 1.0
-    },
-    {
-      "r": 0.2505526542663574,
-      "g": 0.4543316662311554,
-      "b": 0.12156865745782852,
-      "a": 1.0
-    }
-  ]
+    "levelId": 19,
+    "description": "仙人掌",
+    "gridWidth": 35,
+    "gridHeight": 35,
+    "slotCapacity": 7,
+    "imageFilled": true,
+    "initialSegments": [
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 1,
+                    "y": 17
+                },
+                {
+                    "x": 2,
+                    "y": 17
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 28,
+                    "y": 23
+                },
+                {
+                    "x": 27,
+                    "y": 23
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 24,
+                    "y": 24
+                },
+                {
+                    "x": 18,
+                    "y": 24
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 17,
+                    "y": 28
+                },
+                {
+                    "x": 10,
+                    "y": 28
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 22,
+                    "y": 25
+                },
+                {
+                    "x": 22,
+                    "y": 32
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 12,
+                    "y": 8
+                },
+                {
+                    "x": 19,
+                    "y": 8
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 13,
+                    "y": 33
+                },
+                {
+                    "x": 13,
+                    "y": 29
+                },
+                {
+                    "x": 12,
+                    "y": 29
+                },
+                {
+                    "x": 12,
+                    "y": 32
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 3,
+                    "y": 25
+                },
+                {
+                    "x": 3,
+                    "y": 18
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 2,
+                    "y": 23
+                },
+                {
+                    "x": 2,
+                    "y": 18
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 14,
+                    "y": 33
+                },
+                {
+                    "x": 21,
+                    "y": 33
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 18,
+                    "y": 34
+                },
+                {
+                    "x": 16,
+                    "y": 34
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 18,
+                    "y": 32
+                },
+                {
+                    "x": 18,
+                    "y": 25
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 4,
+                    "y": 21
+                },
+                {
+                    "x": 9,
+                    "y": 21
+                },
+                {
+                    "x": 9,
+                    "y": 23
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 10,
+                    "y": 22
+                },
+                {
+                    "x": 10,
+                    "y": 27
+                },
+                {
+                    "x": 12,
+                    "y": 27
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 12,
+                    "y": 21
+                },
+                {
+                    "x": 19,
+                    "y": 21
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 12,
+                    "y": 4
+                },
+                {
+                    "x": 19,
+                    "y": 4
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 12,
+                    "y": 3
+                },
+                {
+                    "x": 19,
+                    "y": 3
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 17,
+                    "y": 0
+                },
+                {
+                    "x": 17,
+                    "y": 2
+                },
+                {
+                    "x": 13,
+                    "y": 2
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 15,
+                    "y": 0
+                },
+                {
+                    "x": 16,
+                    "y": 0
+                },
+                {
+                    "x": 16,
+                    "y": 1
+                },
+                {
+                    "x": 14,
+                    "y": 1
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 25,
+                    "y": 11
+                },
+                {
+                    "x": 32,
+                    "y": 11
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 20,
+                    "y": 1
+                },
+                {
+                    "x": 20,
+                    "y": 8
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 32,
+                    "y": 6
+                },
+                {
+                    "x": 32,
+                    "y": 10
+                },
+                {
+                    "x": 29,
+                    "y": 10
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 33,
+                    "y": 7
+                },
+                {
+                    "x": 33,
+                    "y": 8
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 8,
+                    "y": 17
+                },
+                {
+                    "x": 9,
+                    "y": 17
+                },
+                {
+                    "x": 9,
+                    "y": 14
+                },
+                {
+                    "x": 6,
+                    "y": 14
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 8,
+                    "y": 13
+                },
+                {
+                    "x": 7,
+                    "y": 13
+                },
+                {
+                    "x": 7,
+                    "y": 12
+                },
+                {
+                    "x": 3,
+                    "y": 12
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 2,
+                    "y": 14
+                },
+                {
+                    "x": 5,
+                    "y": 14
+                },
+                {
+                    "x": 5,
+                    "y": 13
+                },
+                {
+                    "x": 6,
+                    "y": 13
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 3,
+                    "y": 13
+                },
+                {
+                    "x": 4,
+                    "y": 13
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 6,
+                    "y": 27
+                },
+                {
+                    "x": 6,
+                    "y": 22
+                },
+                {
+                    "x": 4,
+                    "y": 22
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 11,
+                    "y": 5
+                },
+                {
+                    "x": 11,
+                    "y": 6
+                },
+                {
+                    "x": 18,
+                    "y": 6
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 12,
+                    "y": 5
+                },
+                {
+                    "x": 18,
+                    "y": 5
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 12,
+                    "y": 7
+                },
+                {
+                    "x": 17,
+                    "y": 7
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 19,
+                    "y": 5
+                },
+                {
+                    "x": 19,
+                    "y": 7
+                },
+                {
+                    "x": 18,
+                    "y": 7
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 31,
+                    "y": 21
+                },
+                {
+                    "x": 24,
+                    "y": 21
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 30,
+                    "y": 22
+                },
+                {
+                    "x": 25,
+                    "y": 22
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 24,
+                    "y": 22
+                },
+                {
+                    "x": 19,
+                    "y": 22
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 20,
+                    "y": 23
+                },
+                {
+                    "x": 14,
+                    "y": 23
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 18,
+                    "y": 22
+                },
+                {
+                    "x": 12,
+                    "y": 22
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 21,
+                    "y": 25
+                },
+                {
+                    "x": 21,
+                    "y": 32
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 4,
+                    "y": 26
+                },
+                {
+                    "x": 5,
+                    "y": 26
+                },
+                {
+                    "x": 5,
+                    "y": 23
+                },
+                {
+                    "x": 4,
+                    "y": 23
+                },
+                {
+                    "x": 4,
+                    "y": 25
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 24,
+                    "y": 18
+                },
+                {
+                    "x": 24,
+                    "y": 20
+                },
+                {
+                    "x": 19,
+                    "y": 20
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 20,
+                    "y": 21
+                },
+                {
+                    "x": 23,
+                    "y": 21
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 28,
+                    "y": 10
+                },
+                {
+                    "x": 25,
+                    "y": 10
+                },
+                {
+                    "x": 25,
+                    "y": 6
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 7,
+                    "y": 22
+                },
+                {
+                    "x": 8,
+                    "y": 22
+                },
+                {
+                    "x": 8,
+                    "y": 27
+                },
+                {
+                    "x": 9,
+                    "y": 27
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 7,
+                    "y": 27
+                },
+                {
+                    "x": 7,
+                    "y": 23
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 9,
+                    "y": 24
+                },
+                {
+                    "x": 9,
+                    "y": 26
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 4,
+                    "y": 19
+                },
+                {
+                    "x": 9,
+                    "y": 19
+                },
+                {
+                    "x": 9,
+                    "y": 18
+                },
+                {
+                    "x": 8,
+                    "y": 18
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 4,
+                    "y": 20
+                },
+                {
+                    "x": 9,
+                    "y": 20
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 4,
+                    "y": 18
+                },
+                {
+                    "x": 7,
+                    "y": 18
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 32,
+                    "y": 19
+                },
+                {
+                    "x": 32,
+                    "y": 12
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 26,
+                    "y": 20
+                },
+                {
+                    "x": 32,
+                    "y": 20
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 25,
+                    "y": 20
+                },
+                {
+                    "x": 25,
+                    "y": 15
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 31,
+                    "y": 13
+                },
+                {
+                    "x": 25,
+                    "y": 13
+                },
+                {
+                    "x": 25,
+                    "y": 12
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 26,
+                    "y": 12
+                },
+                {
+                    "x": 31,
+                    "y": 12
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 26,
+                    "y": 19
+                },
+                {
+                    "x": 26,
+                    "y": 14
+                },
+                {
+                    "x": 25,
+                    "y": 14
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 31,
+                    "y": 8
+                },
+                {
+                    "x": 26,
+                    "y": 8
+                },
+                {
+                    "x": 26,
+                    "y": 9
+                },
+                {
+                    "x": 27,
+                    "y": 9
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 31,
+                    "y": 9
+                },
+                {
+                    "x": 28,
+                    "y": 9
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 20,
+                    "y": 29
+                },
+                {
+                    "x": 19,
+                    "y": 29
+                },
+                {
+                    "x": 19,
+                    "y": 25
+                },
+                {
+                    "x": 20,
+                    "y": 25
+                },
+                {
+                    "x": 20,
+                    "y": 26
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 17,
+                    "y": 32
+                },
+                {
+                    "x": 17,
+                    "y": 29
+                },
+                {
+                    "x": 14,
+                    "y": 29
+                },
+                {
+                    "x": 14,
+                    "y": 30
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 8,
+                    "y": 15
+                },
+                {
+                    "x": 8,
+                    "y": 16
+                },
+                {
+                    "x": 2,
+                    "y": 16
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 2,
+                    "y": 15
+                },
+                {
+                    "x": 7,
+                    "y": 15
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 17,
+                    "y": 25
+                },
+                {
+                    "x": 11,
+                    "y": 25
+                },
+                {
+                    "x": 11,
+                    "y": 26
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 11,
+                    "y": 23
+                },
+                {
+                    "x": 11,
+                    "y": 24
+                },
+                {
+                    "x": 17,
+                    "y": 24
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 12,
+                    "y": 23
+                },
+                {
+                    "x": 13,
+                    "y": 23
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 17,
+                    "y": 26
+                },
+                {
+                    "x": 12,
+                    "y": 26
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 13,
+                    "y": 27
+                },
+                {
+                    "x": 17,
+                    "y": 27
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 31,
+                    "y": 15
+                },
+                {
+                    "x": 27,
+                    "y": 15
+                },
+                {
+                    "x": 27,
+                    "y": 14
+                },
+                {
+                    "x": 29,
+                    "y": 14
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 31,
+                    "y": 14
+                },
+                {
+                    "x": 30,
+                    "y": 14
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 12,
+                    "y": 14
+                },
+                {
+                    "x": 19,
+                    "y": 14
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 26,
+                    "y": 7
+                },
+                {
+                    "x": 26,
+                    "y": 5
+                },
+                {
+                    "x": 31,
+                    "y": 5
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 27,
+                    "y": 4
+                },
+                {
+                    "x": 30,
+                    "y": 4
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 12,
+                    "y": 20
+                },
+                {
+                    "x": 18,
+                    "y": 20
+                },
+                {
+                    "x": 18,
+                    "y": 19
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 22,
+                    "y": 14
+                },
+                {
+                    "x": 20,
+                    "y": 14
+                },
+                {
+                    "x": 20,
+                    "y": 9
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 21,
+                    "y": 2
+                },
+                {
+                    "x": 21,
+                    "y": 9
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 22,
+                    "y": 2
+                },
+                {
+                    "x": 22,
+                    "y": 8
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 21,
+                    "y": 12
+                },
+                {
+                    "x": 21,
+                    "y": 13
+                },
+                {
+                    "x": 22,
+                    "y": 13
+                },
+                {
+                    "x": 22,
+                    "y": 9
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 21,
+                    "y": 10
+                },
+                {
+                    "x": 21,
+                    "y": 11
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 23,
+                    "y": 19
+                },
+                {
+                    "x": 22,
+                    "y": 19
+                },
+                {
+                    "x": 22,
+                    "y": 15
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 18,
+                    "y": 18
+                },
+                {
+                    "x": 18,
+                    "y": 15
+                },
+                {
+                    "x": 21,
+                    "y": 15
+                },
+                {
+                    "x": 21,
+                    "y": 16
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 16,
+                    "y": 9
+                },
+                {
+                    "x": 16,
+                    "y": 13
+                },
+                {
+                    "x": 13,
+                    "y": 13
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 15,
+                    "y": 9
+                },
+                {
+                    "x": 15,
+                    "y": 12
+                },
+                {
+                    "x": 12,
+                    "y": 12
+                },
+                {
+                    "x": 12,
+                    "y": 13
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 12,
+                    "y": 16
+                },
+                {
+                    "x": 17,
+                    "y": 16
+                },
+                {
+                    "x": 17,
+                    "y": 18
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 17,
+                    "y": 15
+                },
+                {
+                    "x": 12,
+                    "y": 15
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 12,
+                    "y": 19
+                },
+                {
+                    "x": 17,
+                    "y": 19
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 31,
+                    "y": 6
+                },
+                {
+                    "x": 31,
+                    "y": 7
+                },
+                {
+                    "x": 27,
+                    "y": 7
+                },
+                {
+                    "x": 27,
+                    "y": 6
+                },
+                {
+                    "x": 28,
+                    "y": 6
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 30,
+                    "y": 6
+                },
+                {
+                    "x": 29,
+                    "y": 6
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 12,
+                    "y": 18
+                },
+                {
+                    "x": 16,
+                    "y": 18
+                },
+                {
+                    "x": 16,
+                    "y": 17
+                },
+                {
+                    "x": 14,
+                    "y": 17
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 12,
+                    "y": 17
+                },
+                {
+                    "x": 13,
+                    "y": 17
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 19,
+                    "y": 18
+                },
+                {
+                    "x": 21,
+                    "y": 18
+                },
+                {
+                    "x": 21,
+                    "y": 17
+                },
+                {
+                    "x": 19,
+                    "y": 17
+                },
+                {
+                    "x": 19,
+                    "y": 16
+                },
+                {
+                    "x": 20,
+                    "y": 16
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 19,
+                    "y": 19
+                },
+                {
+                    "x": 21,
+                    "y": 19
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 20,
+                    "y": 27
+                },
+                {
+                    "x": 20,
+                    "y": 28
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 19,
+                    "y": 13
+                },
+                {
+                    "x": 17,
+                    "y": 13
+                },
+                {
+                    "x": 17,
+                    "y": 9
+                },
+                {
+                    "x": 18,
+                    "y": 9
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 18,
+                    "y": 12
+                },
+                {
+                    "x": 18,
+                    "y": 10
+                },
+                {
+                    "x": 19,
+                    "y": 10
+                },
+                {
+                    "x": 19,
+                    "y": 9
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 31,
+                    "y": 16
+                },
+                {
+                    "x": 27,
+                    "y": 16
+                },
+                {
+                    "x": 27,
+                    "y": 19
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 31,
+                    "y": 19
+                },
+                {
+                    "x": 28,
+                    "y": 19
+                },
+                {
+                    "x": 28,
+                    "y": 17
+                },
+                {
+                    "x": 30,
+                    "y": 17
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 31,
+                    "y": 17
+                },
+                {
+                    "x": 31,
+                    "y": 18
+                },
+                {
+                    "x": 29,
+                    "y": 18
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 12,
+                    "y": 9
+                },
+                {
+                    "x": 14,
+                    "y": 9
+                },
+                {
+                    "x": 14,
+                    "y": 11
+                },
+                {
+                    "x": 12,
+                    "y": 11
+                },
+                {
+                    "x": 12,
+                    "y": 10
+                },
+                {
+                    "x": 13,
+                    "y": 10
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 15,
+                    "y": 31
+                },
+                {
+                    "x": 14,
+                    "y": 31
+                },
+                {
+                    "x": 14,
+                    "y": 32
+                },
+                {
+                    "x": 16,
+                    "y": 32
+                },
+                {
+                    "x": 16,
+                    "y": 30
+                },
+                {
+                    "x": 15,
+                    "y": 30
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 19,
+                    "y": 2
+                },
+                {
+                    "x": 18,
+                    "y": 2
+                },
+                {
+                    "x": 18,
+                    "y": 0
+                },
+                {
+                    "x": 19,
+                    "y": 0
+                },
+                {
+                    "x": 19,
+                    "y": 1
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 19,
+                    "y": 11
+                },
+                {
+                    "x": 19,
+                    "y": 12
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 19,
+                    "y": 30
+                },
+                {
+                    "x": 19,
+                    "y": 32
+                },
+                {
+                    "x": 20,
+                    "y": 32
+                },
+                {
+                    "x": 20,
+                    "y": 30
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 3,
+                    "y": 17
+                },
+                {
+                    "x": 7,
+                    "y": 17
+                }
+            ]
+        },
+        {
+            "colorDisplayIndex": 1,
+            "points": [
+                {
+                    "x": 26,
+                    "y": 23
+                },
+                {
+                    "x": 21,
+                    "y": 23
+                }
+            ]
+        }
+    ],
+    "colorPalette": [
+        {
+            "r": 0.4530915915966034,
+            "g": 0.6826300024986267,
+            "b": 0.32014065980911257,
+            "a": 1.0
+        }
+    ],
+    "sourceImagePng": "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"
 }

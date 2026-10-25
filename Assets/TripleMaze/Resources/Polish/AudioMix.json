@@ -1,0 +1,68 @@
+{
+  "clips": [
+    {
+      "key": "ambience",
+      "gain": 1
+    },
+    {
+      "key": "tap",
+      "gain": 1
+    },
+    {
+      "key": "pick",
+      "gain": 1
+    },
+    {
+      "key": "slide",
+      "gain": 1
+    },
+    {
+      "key": "land",
+      "gain": 1
+    },
+    {
+      "key": "blocked",
+      "gain": 1
+    },
+    {
+      "key": "hint-sound",
+      "gain": 1
+    },
+    {
+      "key": "match",
+      "gain": 1
+    },
+    {
+      "key": "chain",
+      "gain": 1
+    },
+    {
+      "key": "voice-good",
+      "gain": 1
+    },
+    {
+      "key": "voice-great",
+      "gain": 1
+    },
+    {
+      "key": "voice-perfect",
+      "gain": 1
+    },
+    {
+      "key": "voice-excellent",
+      "gain": 1
+    },
+    {
+      "key": "win",
+      "gain": 1
+    },
+    {
+      "key": "lose",
+      "gain": 1
+    },
+    {
+      "key": "fireworks",
+      "gain": 1
+    }
+  ]
+}

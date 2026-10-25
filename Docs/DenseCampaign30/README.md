@@ -1,5 +1,7 @@
 # 图片密铺版 30 关
 
+此版本已归档。当前正式数据为 [约 100 枚箭头版 30 关](../BalancedCampaign30/README.md)，颜色已按大色系合并，箭头数已适当减少。
+
 本套已替换正式 `Resources/Levels/level_01.json` 至 `level_30.json`，保留原来的图片主题和编号。
 
 ## 本轮规则

@@ -1,0 +1,243 @@
+{
+  "version": 3,
+  "game": {
+    "remainingStars": 3,
+    "trayY": 273,
+    "boardY": 695,
+    "boardScale": 100,
+    "toolsY": 1145,
+    "toolsWidth": 170
+  },
+  "feedback": {
+    "width": 239,
+    "y": 175,
+    "word": "good",
+    "sound": true
+  },
+  "menu": {
+    "logoWidth": 650,
+    "logoY": 260,
+    "watermarkWidth": 1150,
+    "watermarkY": 720,
+    "watermarkOpacity": 12,
+    "watermarkRotation": -12,
+    "buttonWidth": 252,
+    "buttonY": 990
+  },
+  "result": {
+    "titleSize": 60,
+    "titleY": 204,
+    "crownWidth": 264,
+    "crownY": 406,
+    "starsScale": 100,
+    "starsY": 616,
+    "statsY": 773,
+    "buttonWidth": 230,
+    "buttonsY": 947,
+    "outcome": "win",
+    "bulbWidth": 150
+  },
+  "settings": {
+    "width": 600,
+    "height": 720,
+    "x": 0,
+    "y": 0
+  },
+  "audio": {
+    "music": 100,
+    "effects": 100
+  },
+  "texts": {
+    "gameTitle": "第 {level:00} 关",
+    "settings": "设置",
+    "hint": "提示",
+    "undo": "撤回",
+    "start": "开始第 {level} 关",
+    "level": "LEVEL {level:00}",
+    "winTitle": "关卡完成",
+    "loseTitle": "暂未通关",
+    "next": "下一关",
+    "retry": "再试一次",
+    "home": "返回菜单",
+    "resultHome": "回到首页",
+    "moves": "移动",
+    "matches": "三消",
+    "settingsTitle": "设置",
+    "music": "音乐",
+    "effects": "音效",
+    "volumeHint": "拖到最左侧即可静音",
+    "restart": "重新开始",
+    "close": "关闭",
+    "muted": "静音"
+  },
+  "elements": {
+    "gameLife": {
+      "visible": true,
+      "x": 0,
+      "y": 0,
+      "scale": 100
+    },
+    "gameSettings": {
+      "visible": true,
+      "x": 0,
+      "y": 0,
+      "scale": 100
+    },
+    "gameTitle": {
+      "visible": true,
+      "x": 0,
+      "y": 0,
+      "scale": 100
+    },
+    "gameProgress": {
+      "visible": false,
+      "x": 0,
+      "y": 0,
+      "scale": 100
+    },
+    "gameTray": {
+      "visible": true,
+      "x": 0,
+      "y": 0,
+      "scale": 100
+    },
+    "gameBoard": {
+      "visible": true,
+      "x": 0,
+      "y": 0,
+      "scale": 100
+    },
+    "gameHint": {
+      "visible": true,
+      "x": 0,
+      "y": 0,
+      "scale": 80
+    },
+    "gameUndo": {
+      "visible": true,
+      "x": 0,
+      "y": 0,
+      "scale": 80
+    },
+    "gameFeedback": {
+      "visible": true,
+      "x": 0,
+      "y": 0,
+      "scale": 100
+    },
+    "menuLogo": {
+      "visible": true,
+      "x": 0,
+      "y": 0,
+      "scale": 100
+    },
+    "menuWatermark": {
+      "visible": true,
+      "x": 0,
+      "y": 0,
+      "scale": 100
+    },
+    "menuSettings": {
+      "visible": true,
+      "x": 0,
+      "y": 0,
+      "scale": 100
+    },
+    "menuStart": {
+      "visible": true,
+      "x": 0,
+      "y": 0,
+      "scale": 100
+    },
+    "resultLevel": {
+      "visible": true,
+      "x": 0,
+      "y": 0,
+      "scale": 200
+    },
+    "resultTitle": {
+      "visible": true,
+      "x": 0,
+      "y": 0,
+      "scale": 100
+    },
+    "resultArt": {
+      "visible": true,
+      "x": 0,
+      "y": 0,
+      "scale": 100
+    },
+    "resultStars": {
+      "visible": true,
+      "x": 0,
+      "y": 88,
+      "scale": 100
+    },
+    "resultStats": {
+      "visible": false,
+      "x": 0,
+      "y": 0,
+      "scale": 100
+    },
+    "resultNext": {
+      "visible": true,
+      "x": 0,
+      "y": 0,
+      "scale": 100
+    },
+    "resultHome": {
+      "visible": true,
+      "x": 0,
+      "y": 0,
+      "scale": 100
+    },
+    "settingsPanel": {
+      "visible": true,
+      "x": 0,
+      "y": 0,
+      "scale": 100
+    },
+    "settingsTitle": {
+      "visible": true,
+      "x": 0,
+      "y": 0,
+      "scale": 100
+    },
+    "settingsMusic": {
+      "visible": true,
+      "x": 0,
+      "y": 0,
+      "scale": 100
+    },
+    "settingsEffects": {
+      "visible": true,
+      "x": 0,
+      "y": 0,
+      "scale": 100
+    },
+    "settingsHint": {
+      "visible": true,
+      "x": 0,
+      "y": 0,
+      "scale": 100
+    },
+    "settingsRestart": {
+      "visible": true,
+      "x": 0,
+      "y": 0,
+      "scale": 100
+    },
+    "settingsHome": {
+      "visible": true,
+      "x": 0,
+      "y": 0,
+      "scale": 100
+    },
+    "settingsClose": {
+      "visible": true,
+      "x": 0,
+      "y": 0,
+      "scale": 100
+    }
+  }
+}

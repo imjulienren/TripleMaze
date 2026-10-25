@@ -10,11 +10,12 @@ namespace TripleMaze
     public class TripleMazeGame : MonoBehaviour
     {
         public static LevelData PreviewLevel;
-        [Min(1f)] public float ArrowSpeed=55f; // Grid cells per second, constant throughout flight.
+        [Min(1f)] public float ArrowSpeed=50f; // Grid cells per second, constant throughout flight.
         public PuzzleModel Model {get;private set;}
-        public int LevelNumber {get;private set;}=6;
+        public int LevelNumber {get;private set;}=1;
         public bool Busy {get;private set;}
         public string Page {get;private set;}="Home";
+        RectTransform settingsOverlay;float settingsTimeScale=1;
         Canvas canvas;RectTransform root,screen,pageRoot,boardViewport,tray,effectsLayer;
         Font font,displayFont;FeedbackAudio audioFeedback;
         ArrowBoardGraphic board;Text status,progress,trayCount;SoftPanel progressFill;
@@ -38,9 +39,16 @@ namespace TripleMaze
         void Awake()
         {
             #if UNITY_EDITOR
-            LevelNumber=UnityEditor.EditorPrefs.GetInt("TripleMaze.DebugLevel",6);
+            // Only an explicit editor jump may override this particular launch.
+            LevelNumber=UnityEditor.SessionState.GetInt("TripleMaze.NextDebugLevel",1);
+            UnityEditor.SessionState.EraseInt("TripleMaze.NextDebugLevel");
 #endif
-            Screen.orientation=ScreenOrientation.Portrait;Application.targetFrameRate=60;Application.runInBackground=true;
+            Screen.orientation=ScreenOrientation.Portrait;
+            int refreshRate=Mathf.RoundToInt((float)Screen.currentResolution.refreshRateRatio.value);
+            Application.targetFrameRate=Mathf.Max(60,refreshRate);
+            QualitySettings.vSyncCount=Application.isMobilePlatform?0:1;
+            UnityEngine.Rendering.OnDemandRendering.renderFrameInterval=1;
+            Application.runInBackground=true;
             font=Resources.Load<Font>("Fonts/NotoSansSC");if(!font)font=Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
             displayFont=Resources.Load<Font>("Polish/Inter-Bold");if(!displayFont)displayFont=font;
             audioFeedback=gameObject.AddComponent<FeedbackAudio>();
@@ -52,7 +60,7 @@ namespace TripleMaze
             if(!FindObjectOfType<EventSystem>())new GameObject("EventSystem",typeof(EventSystem),typeof(StandaloneInputModule));
             if(PreviewLevel!=null){var d=PreviewLevel;PreviewLevel=null;StartLevel(d);}else Home();
         }
-        void OnDestroy(){if(canvas)Destroy(canvas.gameObject);foreach(var s in sprites.Values)if(s)Destroy(s);}
+        void OnDestroy(){CloseSettings();if(canvas)Destroy(canvas.gameObject);foreach(var s in sprites.Values)if(s)Destroy(s);}
         static void Stretch(RectTransform r){r.anchorMin=Vector2.zero;r.anchorMax=Vector2.one;r.sizeDelta=Vector2.zero;r.anchoredPosition=Vector2.zero;}
         RectTransform Rect(string name,Transform parent,Vector2 pos,Vector2 size)
         {var r=new GameObject(name,typeof(RectTransform)).GetComponent<RectTransform>();r.SetParent(parent,false);r.anchorMin=r.anchorMax=Vector2.one*.5f;r.sizeDelta=size;r.anchoredPosition=pos;return r;}
@@ -88,24 +96,89 @@ namespace TripleMaze
         {var f=Box(name,parent,pos,new Vector2(76,76),panel,26);var b=f.gameObject.AddComponent<Button>();b.targetGraphic=f;b.transition=Selectable.Transition.None;f.gameObject.AddComponent<PressFeedback>();if(icon=="retry"){var symbol=Rect("Retry",f.transform,Vector2.zero,new Vector2(34,34)).gameObject.AddComponent<RetryIcon>();symbol.color=white;symbol.raycastTarget=false;}else Icon(icon,f.transform,Vector2.zero,new Vector2(30,32),white);b.onClick.AddListener(()=>{audioFeedback.Play("tap",.3f);action();});return b;}
         void Clear(string page)
         {
-            StopAllCoroutines();Busy=false;activeAnimations=0;settling=false;finishing=false;logicalTray.Clear();collections.Clear();mergingTokens.Clear();Page=page;tokens.Clear();moveHistory.Clear();combo=0;lastMatchMove=-99;
+#if UNITY_EDITOR
+            DebugAutoPlaying=false;
+#endif
+            CloseSettings();StopAllCoroutines();Busy=false;activeAnimations=0;settling=false;finishing=false;logicalTray.Clear();collections.Clear();mergingTokens.Clear();Page=page;tokens.Clear();moveHistory.Clear();combo=0;lastMatchMove=-99;
             if(pageRoot){pageRoot.gameObject.SetActive(false);Destroy(pageRoot.gameObject);}
-            var bg=Box(page,root,Vector2.zero,PortraitViewport.DesignSize,navy,0);bg.Gradient=true;bg.Bottom=new Color32(16,25,43,255);pageRoot=bg.rectTransform;
+            var bg=Box(page,root,Vector2.zero,PortraitViewport.DesignSize,navy,0);bg.Gradient=true;bg.Bottom=new Color32(16,25,43,255);pageRoot=bg.rectTransform;Stretch(pageRoot);
             Glow(pageRoot,new Vector2(270,450),new Vector2(920,900),new Color(.22f,.43f,.56f,.14f));Glow(pageRoot,new Vector2(-290,-460),new Vector2(900,900),new Color(.28f,.23f,.5f,.12f));
             screen=Rect("SafeArea",pageRoot,Vector2.zero,PortraitViewport.DesignSize);
             effectsLayer=Rect("Feedback",screen,Vector2.zero,PortraitViewport.DesignSize);
         }
-        void TopSound()
-        {var b=IconButton("声音","sound",screen,new Vector2(292,555),()=>{audioFeedback.Toggle();Home();});b.GetComponentInChildren<Image>().color=audioFeedback.Muted?muted:white;}
+        void ApplySafeAreaLayout()
+        {
+            // 保留 720 x 1280 中的边距：顶部和底部控件随安全区延展，棋盘保持居中。
+            for(int i=0;i<screen.childCount;i++)
+            {
+                var item=screen.GetChild(i) as RectTransform;
+                if(!item || item==effectsLayer)continue;
+                var position=item.anchoredPosition;
+                if(position.y>=350)
+                {
+                    item.anchorMin=item.anchorMax=new Vector2(.5f,1);
+                    item.anchoredPosition=new Vector2(position.x,position.y-PortraitViewport.DesignSize.y*.5f);
+                }
+                else if(position.y<=-300)
+                {
+                    item.anchorMin=item.anchorMax=new Vector2(.5f,0);
+                    item.anchoredPosition=new Vector2(position.x,position.y+PortraitViewport.DesignSize.y*.5f);
+                }
+            }
+            root.GetComponent<PortraitViewport>().Refresh();
+        }
+        void AddSettingsButton()
+        {
+            Button("设置",screen,new Vector2(292,550),new Vector2(84,76),OpenSettings);
+        }
+        void CloseSettings()
+        {
+            if(!settingsOverlay)return;
+            settingsOverlay.gameObject.SetActive(false);Destroy(settingsOverlay.gameObject);settingsOverlay=null;
+            Time.timeScale=settingsTimeScale;audioFeedback.SaveVolumes();
+        }
+        void OpenSettings()
+        {
+            if(settingsOverlay)return;
+            settingsTimeScale=Time.timeScale;Time.timeScale=0;
+            var shade=Box("Settings overlay",root,Vector2.zero,Vector2.zero,new Color(0,0,0,.72f),0);
+            settingsOverlay=shade.rectTransform;Stretch(settingsOverlay);settingsOverlay.SetAsLastSibling();
+            var panelRoot=Box("Settings panel",settingsOverlay,screen.anchoredPosition,new Vector2(600,720),panel,32).rectTransform;
+            Label("设置",panelRoot,new Vector2(0,285),new Vector2(400,64),36,white);
+            VolumeSlider(panelRoot,"音乐",145,audioFeedback.MusicVolume,audioFeedback.SetMusicVolume);
+            VolumeSlider(panelRoot,"音效",15,audioFeedback.EffectsVolume,audioFeedback.SetEffectsVolume);
+            Label("拖到最左侧即可静音",panelRoot,new Vector2(0,-75),new Vector2(460,40),20,muted);
+            if(Page=="Game")
+            {
+                var currentLevel=Model.Level;
+                Button("重新开始",panelRoot,new Vector2(0,-150),new Vector2(440,70),()=>{CloseSettings();StartLevel(currentLevel);});
+                Button("返回菜单",panelRoot,new Vector2(0,-235),new Vector2(440,70),()=>{CloseSettings();Home();});
+            }
+            Button("关闭",panelRoot,new Vector2(0,-315),new Vector2(220,60),CloseSettings,true);
+        }
+        void VolumeSlider(Transform parent,string title,float y,float value,UnityEngine.Events.UnityAction<float> change)
+        {
+            Label(title,parent,new Vector2(-170,y+35),new Vector2(100,40),26,white);
+            var number=Label(value<=0?"静音":Mathf.RoundToInt(value*100)+"%",parent,new Vector2(165,y+35),new Vector2(130,40),23,mint);
+            var sliderRoot=Rect(title+" volume",parent,new Vector2(0,y-15),new Vector2(440,52));
+            var track=Box("Track",sliderRoot,Vector2.zero,new Vector2(440,10),new Color32(15,24,40,255),5);
+            var fillArea=Rect("Fill area",sliderRoot,Vector2.zero,new Vector2(410,10));
+            var fill=Box("Fill",fillArea,Vector2.zero,Vector2.zero,mint,5);Stretch(fill.rectTransform);
+            var handleArea=Rect("Handle area",sliderRoot,Vector2.zero,new Vector2(410,0));
+            var handle=Box("Handle",handleArea,Vector2.zero,new Vector2(34,34),white,17);
+            var slider=sliderRoot.gameObject.AddComponent<Slider>();slider.direction=Slider.Direction.LeftToRight;
+            slider.fillRect=fill.rectTransform;slider.handleRect=handle.rectTransform;slider.targetGraphic=handle;slider.minValue=0;slider.maxValue=1;slider.value=value;
+            slider.onValueChanged.AddListener(v=>{change(v);number.text=v<=0?"静音":Mathf.RoundToInt(v*100)+"%";});
+        }
         public void Home()
         {
-            Clear("Home");
+            Clear("Home");AddSettingsButton();
             // Layout approved in the 720 x 1280 UI preview (top-origin Y = 260).
             Icon("title-art",screen,new Vector2(0,380),new Vector2(650,420),Color.white);
             AddMenuWatermark();
             int saved=Mathf.Clamp(LevelNumber,1,Mathf.Max(1,levels.Count));
             Button($"开始第 {saved} 关",screen,new Vector2(0,-350),new Vector2(252,96),()=>{LevelNumber=saved;StartLevel();},true);
-            StartCoroutine(Entrance(pageRoot));
+            ApplySafeAreaLayout();StartCoroutine(Entrance(pageRoot));
         }
         static ArrowData A(int color,params int[] xy){var a=new ArrowData{colorDisplayIndex=color};for(int i=0;i<xy.Length;i+=2)a.points.Add(new Vector2Int(xy[i],xy[i+1]));return a;}
         public void StartLevel(){if(levels.Count>0)StartLevel(JsonUtility.FromJson<LevelData>(levels[(LevelNumber-1)%levels.Count].text));}
@@ -113,8 +186,7 @@ namespace TripleMaze
         {
             var errors=PuzzleModel.Validate(data);if(errors.Count>0){Debug.LogError(string.Join("; ",errors));return;}
             Clear("Game");Model=new PuzzleModel(data);LevelNumber=Mathf.Clamp(data.levelId,1,Mathf.Max(1,levels.Count));
-            IconButton("首页","back",screen,new Vector2(-292,550),Home);
-            IconButton("重试","retry",screen,new Vector2(292,550),()=>StartLevel(data));
+            AddSettingsButton();
             Label($"第 {data.levelId:00} 关",screen,new Vector2(0,560),new Vector2(320,60),33,white);
 
             var track=Box("Progress track",screen,new Vector2(0,469),new Vector2(592,5),new Color32(47,64,87,255),2);track.raycastTarget=false;
@@ -128,7 +200,7 @@ namespace TripleMaze
             var trayFace=Box("Tray frame",screen,new Vector2(0,365),new Vector2(672,112),new Color32(42,58,80,255),28);trayFace.Gradient=true;trayFace.Bottom=new Color32(29,43,64,255);trayFace.raycastTarget=false;
             tray=Rect("Collection Tray",screen,new Vector2(0,367),new Vector2(650,100));
             stars.Clear();
-            var healthBar=Rect("Remaining stars",screen,new Vector2(-239,455),new Vector2(176,52));
+            var healthBar=Rect("Remaining stars",screen,new Vector2(-239,550),new Vector2(176,52));
             for(int h=0;h<3;h++)
             {
                 var heart=Rect("Life star "+(h+1),healthBar,new Vector2((h-1)*56,0),new Vector2(46,43));
@@ -138,11 +210,11 @@ namespace TripleMaze
             }
             float step=TrayStep;
             for(int i=0;i<data.slotCapacity;i++){var slot=Box("Slot "+i,tray,new Vector2(TrayX(i),0),new Vector2(step-8,83),new Color32(19,31,49,255),18);slot.raycastTarget=false;Label("",slot.transform,Vector2.zero,new Vector2(70,70),16,muted);}
-            var hintRoot=Rect("Hint button layout",screen,new Vector2(-142,-505),new Vector2(250,84));hintRoot.localScale=Vector3.one*.8f;
-            Button("提示",hintRoot,Vector2.zero,new Vector2(250,84),ShowHint,false,"hint");
-            var undoRoot=Rect("Undo button layout",screen,new Vector2(142,-505),new Vector2(250,84));undoRoot.localScale=Vector3.one*.8f;
-            Button("撤回",undoRoot,Vector2.zero,new Vector2(250,84),UndoMove);
-            effectsLayer.SetAsLastSibling();Refresh();StartCoroutine(Entrance(pageRoot));
+            var hintRoot=Rect("Hint button layout",screen,new Vector2(-102,-505),new Vector2(170,84));hintRoot.localScale=Vector3.one*.8f;
+            Button("提示",hintRoot,Vector2.zero,new Vector2(170,84),ShowHint,false,"hint");
+            var undoRoot=Rect("Undo button layout",screen,new Vector2(102,-505),new Vector2(170,84));undoRoot.localScale=Vector3.one*.8f;
+            Button("撤回",undoRoot,Vector2.zero,new Vector2(170,84),UndoMove);
+            effectsLayer.SetAsLastSibling();Refresh();ApplySafeAreaLayout();StartCoroutine(Entrance(pageRoot));
         }
         float TrayStep=>Mathf.Min(86,624f/Model.Level.slotCapacity);
         float TrayX(int index)=>(index-(Model.Level.slotCapacity-1)*.5f)*TrayStep;
@@ -221,7 +293,6 @@ namespace TripleMaze
             board.Motions.Remove(i);board.Redraw();activeAnimations--;FinishIfIdle();
         }
         float VisualTrayX(int index)=>tokens.Count<=Model.Level.slotCapacity?TrayX(index):(index-(tokens.Count-1)*.5f)*Mathf.Min(TrayStep,580f/Mathf.Max(1,tokens.Count-1));
-        Vector2 TrayTarget(RectTransform view)=>effectsLayer.InverseTransformPoint(tray.TransformPoint(new Vector2(VisualTrayX(tokens.IndexOf(view)),0)));
         void LateUpdate()
         {
             if(Page!="Game")return;
@@ -234,26 +305,40 @@ namespace TripleMaze
         {
             int i=job.Index;var motion=new ArrowBoardGraphic.Motion();board.Motions.Add(i,motion);
             audioFeedback.Play("pick",.4f);audioFeedback.Haptic();audioFeedback.Play("slide",.5f,Random.Range(.96f,1.07f));
-            float distance=board.ExitDistance(i);StartCoroutine(ArrowTrail(i));
-            float flightDuration=distance/Mathf.Max(1f,ArrowSpeed);
-            for(float t=0;t<flightDuration;t+=Time.deltaTime){motion.Travel=distance*t/flightDuration;board.Redraw();yield return null;}
-            motion.Travel=distance;
-            Vector2 start=effectsLayer.InverseTransformPoint(board.rectTransform.TransformPoint(board.Path(i)[0]));
-            board.Motions.Remove(i);board.Redraw();
-            var flyer=job.View;flyer.SetParent(effectsLayer,false);flyer.anchoredPosition=start;
-            flyer.localScale=Vector3.one*.74f;flyer.gameObject.SetActive(true);
-            // Every arrow starts its own tray animation immediately on touching the edge.
-            for(float t=0;t<.24f;t+=Time.deltaTime)
+            float contactDistance=board.ExitDistance(i),length=0;
+            var points=Model.Level.initialSegments[i].points;
+            for(int n=1;n<points.Count;n++)length+=Vector2Int.Distance(points[n-1],points[n]);
+            // Keep moving outward until the tail clears the mask; never turn into a flying token.
+            float distance=contactDistance+length+1f;
+            float speed=Mathf.Max(1f,ArrowSpeed),flightDuration=distance/speed;
+            if(FeedbackAnimationRate>1){flightDuration=Mathf.Min(flightDuration,.12f);speed=distance/Mathf.Max(.001f,flightDuration);}
+            bool collected=false;StartCoroutine(ArrowTrail(i));
+            for(float t=0;t<flightDuration;t+=Time.deltaTime)
             {
-                float p=Ease(t/.24f);Vector2 target=TrayTarget(flyer);
-                Vector2 control=(start+target)*.5f+new Vector2(start.x>=0?80:-80,65);
-                flyer.anchoredPosition=(1-p)*(1-p)*start+2*(1-p)*p*control+p*p*target;
-                flyer.localScale=Vector3.one*Mathf.Lerp(.74f,1,p);
-                flyer.localEulerAngles=new Vector3(0,0,Mathf.Sin(p*Mathf.PI)*(start.x>0?-10:10));yield return null;
+                motion.Travel=speed*t;
+                if(!collected && motion.Travel>=contactDistance)
+                {collected=true;StartCoroutine(PopCollectedToken(job));}
+                board.Redraw();yield return null;
             }
-            flyer.SetParent(tray,false);flyer.anchoredPosition=new Vector2(VisualTrayX(tokens.IndexOf(flyer)),0);
-            flyer.localScale=Vector3.one;flyer.localEulerAngles=Vector3.zero;
-            audioFeedback.Play("land",.5f);job.Arrived=true;activeAnimations--;FinishIfIdle();
+            if(!collected)StartCoroutine(PopCollectedToken(job));
+            board.Motions.Remove(i);board.Redraw();activeAnimations--;FinishIfIdle();
+        }
+        IEnumerator PopCollectedToken(CollectionAnimation job)
+        {
+            var view=job.View;
+            view.anchoredPosition=new Vector2(VisualTrayX(tokens.IndexOf(view)),0);
+            view.localScale=Vector3.one*.68f;
+            var fade=view.gameObject.AddComponent<CanvasGroup>();fade.alpha=0;
+            view.gameObject.SetActive(true);audioFeedback.Play("land",.5f);
+            // One restrained pop at the slot, with a quick reveal and a soft settle.
+            float duration=.18f/FeedbackAnimationRate;
+            for(float t=0;t<duration;t+=Time.deltaTime)
+            {
+                float p=t/duration;
+                float scale=p<.7f?Mathf.Lerp(.68f,1.055f,Ease(p/.7f)):Mathf.Lerp(1.055f,1,Mathf.SmoothStep(0,1,(p-.7f)/.3f));
+                view.localScale=Vector3.one*scale;fade.alpha=Mathf.Clamp01(t/.055f);yield return null;
+            }
+            view.localScale=Vector3.one;fade.alpha=1;Destroy(fade);job.Arrived=true;
         }
         IEnumerator SettleCollections()
         {
@@ -261,7 +346,6 @@ namespace TripleMaze
             while(collections.Count>0)
             {
                 var job=collections.Peek();while(!job.Arrived)yield return null;
-                yield return Punch(job.View,.13f,1.13f);
                 if(job.Match!=null)
                 {
                     while(job.Match.Any(x=>!x.Arrived))yield return null;
@@ -272,15 +356,16 @@ namespace TripleMaze
                     foreach(var view in matching)mergingTokens.Add(view);
                     float center=matching.Average(r=>r.anchoredPosition.x);
                     var positions=matching.Select(r=>r.anchoredPosition).ToArray();
-                    for(float t=0;t<.20f;t+=Time.deltaTime)
+                    float mergeDuration=.20f/FeedbackAnimationRate;
+                    for(float t=0;t<mergeDuration;t+=Time.deltaTime)
                     {
-                        float p=t/.20f;
+                        float p=t/mergeDuration;
                         for(int n=0;n<matching.Length;n++){matching[n].anchoredPosition=Vector2.Lerp(positions[n],new Vector2(center,6),Ease(p));matching[n].localScale=Vector3.one*(1+.18f*Mathf.Sin(p*Mathf.PI)-.85f*p*p);}
                         yield return null;
                     }
                     Burst(effectsLayer,effectsLayer.InverseTransformPoint(tray.TransformPoint(new Vector2(center,6))),PuzzleModel.DisplayColor(Model.Level,job.Color),14);
                     foreach(var view in matching){mergingTokens.Remove(view);tokens.Remove(view);Destroy(view.gameObject);}
-                    yield return new WaitForSeconds(.12f);
+                    if(FeedbackAnimationRate<=1)yield return new WaitForSeconds(.12f);
                 }
                 collections.Dequeue();
             }
@@ -292,12 +377,76 @@ namespace TripleMaze
             if(Busy || Page!="Game" || Model.State==RoundState.Playing)return;
             finishing=true;Busy=true;StartCoroutine(FinishRound());
         }
+        float FeedbackAnimationRate
+        {
+            get
+            {
+#if UNITY_EDITOR
+                if(DebugAutoPlaying)return 10;
+#endif
+                return 1;
+            }
+        }
+#if UNITY_EDITOR
+        public bool DebugAutoPlaying {get;private set;}
+        public void DebugWinCurrentLevel()
+        {
+            if(Page!="Game" || Model==null || Model.State!=RoundState.Playing || DebugAutoPlaying)return;
+            DebugAutoPlaying=true;StartCoroutine(DebugPlaySolution());
+        }
+        IEnumerator DebugPlaySolution()
+        {
+            var current=Model;var currentBoard=board;
+            bool wasInteractive=currentBoard.raycastTarget;
+            currentBoard.raycastTarget=false;
+            try
+            {
+                // 等玩家已经触发的动画结束，再从当前棋盘与槽位求解。
+                while(Busy && Page=="Game" && Model==current)yield return null;
+                if(Page!="Game" || Model!=current || current.State!=RoundState.Playing)yield break;
+                bool exhausted;
+                var solution=PuzzleModel.Solve(current,100000,out exhausted);
+                if(solution==null)
+                {
+                    Debug.LogWarning(exhausted?"自动通关搜索达到预算，请重试或重新开始当前关卡。":"当前局面未找到通关解，请重新开始当前关卡。");
+                    yield break;
+                }
+                int expectedMoves=current.Moves,next=0;
+                float started=Time.time;
+                const float launchWindow=2.8f;
+                while(next<solution.Count)
+                {
+                    if(Page!="Game" || Model!=current)yield break;
+                    // 按整关时间排程，帧率较低时同帧补发，允许飞出和三消并行。
+                    int due=Mathf.Min(solution.Count,1+Mathf.FloorToInt((Time.time-started)/launchWindow*solution.Count));
+                    while(next<due)
+                    {
+                        int index=solution[next++];
+                        if(current.Moves!=expectedMoves || !current.CanExit(index))yield break;
+                        ClickArrow(index);expectedMoves++;
+                    }
+                    yield return null;
+                }
+                // 末批箭头与三消继续保持快速反馈，结束后由正常流程播放胜利动效。
+                while(Busy && Page=="Game" && Model==current)yield return null;
+            }
+            finally
+            {
+                DebugAutoPlaying=false;
+                if(currentBoard && board==currentBoard && Page=="Game" && current.State==RoundState.Playing)currentBoard.raycastTarget=wasInteractive;
+            }
+        }
+#endif
         IEnumerator FinishRound()
         {
             if(Model.State==RoundState.Won)
             {
-                for(float t=0;t<1.8f;t+=Time.deltaTime){board.WinWave=t/1.8f*1.05f;board.Redraw();yield return null;}
-                board.WinWave=-1;
+                board.raycastTarget=false;
+                yield return board.RestoreOverview(.45f);
+                const float revealDuration=2.6f;
+                for(float t=0;t<revealDuration;t+=Time.deltaTime){board.CompletionReveal=t/revealDuration;yield return null;}
+                board.CompletionReveal=1;
+                yield return new WaitForSeconds(1.6f);
             }
             else yield return new WaitForSeconds(1.1f);
             Result();
@@ -419,7 +568,6 @@ namespace TripleMaze
         void Result()
         {
             bool win=Model.State==RoundState.Won;var data=Model.Level;
-            if(win)PlayerPrefs.SetInt("TripleMaze.Level",Mathf.Min(Mathf.Max(1,levels.Count),LevelNumber+1));
             Clear(win?"Won":"Lost");audioFeedback.Play(win?"win":"lose",win?.42f:.23f);
             Label($"LEVEL {data.levelId:00}",screen,new Vector2(0,520),new Vector2(400,40),21,gold,true).rectTransform.localScale=Vector3.one*2;
             Label(win?"关卡完成":"暂未通关",screen,new Vector2(0,436),new Vector2(600,80),60,white);
@@ -427,12 +575,12 @@ namespace TripleMaze
             Icon(win?"crown":"hint",screen,new Vector2(0,234),win?new Vector2(264,210):new Vector2(150,195),Color.white);
             for(int n=0;n<3;n++)
             {
-                var star=Icon(n<Model.Health?"star":"star-empty",screen,new Vector2((n-1)*104,n==1?-64:-84),new Vector2(n==1?105:80,n==1?105:80),Color.white);
+                var star=Icon(win && n<Model.Health?"star":"star-empty",screen,new Vector2((n-1)*104,n==1?-64:-84),new Vector2(n==1?105:80,n==1?105:80),Color.white);
                 star.name="Result star "+(n+1);star.rectTransform.localEulerAngles=new Vector3(0,0,(n-1)*-12);StartCoroutine(StarEnter(star.rectTransform,.1f+n*.13f));
             }
             Button(win?"下一关":"再试一次",screen,new Vector2(0,-307),new Vector2(230,96),()=>{if(win){LevelNumber=LevelNumber%levels.Count+1;StartLevel();}else StartLevel(data);},true);
             Button("回到首页",screen,new Vector2(0,-425),new Vector2(230,76),Home);
-            effectsLayer.SetAsLastSibling();StartCoroutine(Entrance(pageRoot));StartCoroutine(ResultFireworks());
+            effectsLayer.SetAsLastSibling();ApplySafeAreaLayout();StartCoroutine(Entrance(pageRoot));if(win)StartCoroutine(ResultFireworks());
         }
         IEnumerator ResultFireworks()
         {

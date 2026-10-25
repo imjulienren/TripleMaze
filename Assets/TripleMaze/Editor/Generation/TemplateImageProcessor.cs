@@ -18,6 +18,19 @@ namespace TripleMaze.Editor.Generation
             }
             finally{RenderTexture.active=previous;RenderTexture.ReleaseTemporary(rt);if(temp)UnityEngine.Object.DestroyImmediate(temp);}
         }
+        static string EncodeSourceImage(Texture2D source)
+        {
+            float scale=Mathf.Min(1,1024f/Mathf.Max(source.width,source.height));
+            int w=Mathf.Max(1,Mathf.RoundToInt(source.width*scale)),h=Mathf.Max(1,Mathf.RoundToInt(source.height*scale));
+            var pixels=Sample(source,w,h);var image=new Texture2D(w,h,TextureFormat.RGBA32,false);
+            try
+            {
+                var bottomUp=new Color[pixels.Length];
+                for(int y=0;y<h;y++)System.Array.Copy(pixels,y*w,bottomUp,(h-1-y)*w,w);
+                image.SetPixels(bottomUp);image.Apply();return Convert.ToBase64String(image.EncodeToPNG());
+            }
+            finally{UnityEngine.Object.DestroyImmediate(image);}
+        }
         public static Color32[,] SamplePixelsColor(Texture2D source,int w,int h)
         {var pixels=Sample(source,w,h);var result=new Color32[w,h];for(int y=0;y<h;y++)for(int x=0;x<w;x++){var c=pixels[y*w+x];result[x,y]=Color.Lerp(Color.white,c,c.a);}return result;}
         public static GenerationTemplate FromImage(Texture2D source,int longestEdge,ImageBackground background,float threshold,int colorLimit,bool removeOutline,bool keepAspect=true)
@@ -25,7 +38,7 @@ namespace TripleMaze.Editor.Generation
             if(!source)throw new ArgumentException("请先选择图片。");
             int w=longestEdge,h=longestEdge;
             if(keepAspect){if(source.width>=source.height)h=Mathf.Max(2,Mathf.RoundToInt(longestEdge*source.height/(float)source.width));else w=Mathf.Max(2,Mathf.RoundToInt(longestEdge*source.width/(float)source.height));}
-            var result=new GenerationTemplate();result.Reset(w,h);result.source=source.name+" ("+source.width+"×"+source.height+")";var pixels=Sample(source,w,h);
+            var result=new GenerationTemplate();result.Reset(w,h);result.sourceImagePng=EncodeSourceImage(source);result.source=source.name+" ("+source.width+"×"+source.height+")";var pixels=Sample(source,w,h);
             var corners=new[]{pixels[0],pixels[w-1],pixels[(h-1)*w],pixels[w*h-1]};var bg=corners.OrderBy(c=>corners.Sum(other=>Distance(c,other))).First();
             bool transparent=pixels.Any(c=>c.a<.1f);
             for(int i=0;i<pixels.Length;i++)

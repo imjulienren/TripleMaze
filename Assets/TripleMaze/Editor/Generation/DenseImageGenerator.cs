@@ -19,30 +19,43 @@ namespace TripleMaze.Editor.Generation
         {for(var p=head+direction;p.x>=0 && p.y>=0 && p.x<w && p.y<h;p+=direction)if(remaining.Contains(p))return false;return true;}
         static int Degree(Vector2Int p,HashSet<Vector2Int> remaining)
         {int n=0;foreach(var d in Directions)if(remaining.Contains(p+d))n++;return n;}
+        static int ColorFamily(Color color)
+        {
+            Color.RGBToHSV(color,out float h,out float s,out float v);
+            if(v<.16f || s<.20f)return v<.50f?7:8;
+            if(h<.045f || h>=.955f)return 0;
+            if(h<.115f)return 1;
+            if(h<.195f)return 2;
+            if(h<.46f)return 3;
+            if(h<.69f)return 4;
+            if(h<.85f)return 5;
+            return 6;
+        }
         static List<Color> ImagePalette(GenerationTemplate t,int limit)
         {
-            // Cluster foreground only; transparent padding must not erase white image regions.
-            var bins=new Dictionary<int,List<Color>>();
-            for(int i=0;i<t.mask.Count;i++)if(t.mask[i])
+            // Shades in one broad family share a single match ID, not just a similar tint.
+            var sums=new Color[9];var counts=new int[9];
+            for(int i=0;i<t.mask.Count;i++)if(t.mask[i]){var color=t.samples[i];int family=ColorFamily(color);sums[family]+=color;counts[family]++;}
+            var colors=new List<Color>();var weights=new List<int>();
+            foreach(int family in Enumerable.Range(0,9).Where(i=>counts[i]>0).OrderByDescending(i=>counts[i]))
+            {var color=sums[family]/counts[family];color.a=1;colors.Add(color);weights.Add(counts[family]);}
+            while(colors.Count>1)
             {
-                Color c=t.samples[i];int key=(Mathf.RoundToInt(c.r*31)<<10)|(Mathf.RoundToInt(c.g*31)<<5)|Mathf.RoundToInt(c.b*31);
-                if(!bins.ContainsKey(key))bins[key]=new List<Color>();bins[key].Add(c);
+                int first=-1,second=-1;float distance=float.MaxValue;
+                for(int i=0;i<colors.Count;i++)for(int j=i+1;j<colors.Count;j++)
+                {float delta=PaletteDistance(colors[i],colors[j]);if(delta<distance){distance=delta;first=i;second=j;}}
+                if(colors.Count<=Mathf.Clamp(limit,1,5) && distance>=.22f)break;
+                int total=weights[first]+weights[second];colors[first]=(colors[first]*weights[first]+colors[second]*weights[second])/total;
+                weights[first]=total;colors.RemoveAt(second);weights.RemoveAt(second);
             }
-            var colors=bins.Values.Select(v=>new {color=v.Aggregate(Color.clear,(sum,c)=>sum+c)/v.Count,weight=v.Count}).OrderByDescending(v=>v.weight).ToList();
-            var centers=new List<Color>{colors[0].color};
-            while(centers.Count<Mathf.Clamp(limit,1,6))
-            {
-                var next=colors.OrderByDescending(v=>v.weight*Mathf.Pow(centers.Min(c=>TemplateImageProcessor.Distance(c,v.color)),2)).First();
-                if(centers.Min(c=>TemplateImageProcessor.Distance(c,next.color))<.10f)break;
-                centers.Add(next.color);
-            }
-            for(int pass=0;pass<10;pass++)
-            {
-                var sums=new Color[centers.Count];var weights=new int[centers.Count];
-                foreach(var item in colors){int c=Enumerable.Range(0,centers.Count).OrderBy(k=>TemplateImageProcessor.Distance(item.color,centers[k])).First();sums[c]+=item.color*item.weight;weights[c]+=item.weight;}
-                for(int c=0;c<centers.Count;c++)if(weights[c]>0){centers[c]=sums[c]/weights[c];var value=centers[c];value.a=1;centers[c]=value;}
-            }
-            return centers;
+            return colors;
+        }
+        static float PaletteDistance(Color a,Color b)
+        {
+            Color.RGBToHSV(a,out float ha,out float sa,out float va);Color.RGBToHSV(b,out float hb,out float sb,out float vb);
+            float hue=Mathf.Abs(ha-hb);hue=Mathf.Min(hue,1-hue);
+            // Merge nearby shades, while keeping recognizably different green/blue/purple families.
+            return TemplateImageProcessor.Distance(a,b)+(sa>.2f && sb>.2f?hue*.8f:0);
         }
         static LevelData Fill(GenerationTemplate t,GenerationSettings cfg,System.Random random)
         {
@@ -168,9 +181,12 @@ namespace TripleMaze.Editor.Generation
             try
             {
                 if(template.Count<6)throw new InvalidOperationException("至少需要六个有效格点。");
-                var random=new System.Random(seed);var level=Fill(template,settings,random);
+                var random=new System.Random(seed);var palette=ImagePalette(template,settings.colorCount);
+                var geometry=template.Copy();
+                for(int i=0;i<geometry.samples.Count;i++)if(geometry.mask[i])geometry.samples[i]=palette.OrderBy(c=>TemplateImageProcessor.Distance(c,geometry.samples[i])).First();
+                var level=Fill(geometry,settings,random);level.sourceImagePng=template.sourceImagePng;
                 if(level.initialSegments.Count<3)throw new InvalidOperationException("轮廓太小，无法组成三枚箭头。");
-                var graph=Orient(level,settings,random);level.colorPalette=ImagePalette(template,settings.colorCount);
+                var graph=Orient(level,settings,random);level.colorPalette=palette;
                 float error;var solution=ColorForSolution(level,template,graph,out error);
                 var errors=PuzzleModel.Validate(level);if(errors.Count>0)throw new InvalidOperationException(string.Join("; ",errors));
                 var report=DifficultyAnalyzer.Analyze(level,solution,8);report.arrowScore=ArrowScore(graph,level);report.overallScore=report.arrowScore;

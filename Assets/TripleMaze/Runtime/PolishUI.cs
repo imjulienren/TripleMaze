@@ -57,27 +57,42 @@ namespace TripleMaze
     }
     public sealed class FeedbackAudio : MonoBehaviour
     {
-        AudioSource[] effects;AudioSource music;int voice;bool muted;
+        AudioSource[] effects;AudioSource music;int voice;
+        public float MusicVolume {get;private set;}
+        public float EffectsVolume {get;private set;}
+        public bool Muted=>MusicVolume<=0 && EffectsVolume<=0;
         readonly System.Collections.Generic.Dictionary<string,AudioClip> clips=new System.Collections.Generic.Dictionary<string,AudioClip>();
-        public bool Muted=>muted;
+        readonly System.Collections.Generic.Dictionary<string,float> gains=new System.Collections.Generic.Dictionary<string,float>();
+        [System.Serializable] public class MixEntry {public string key;public float gain=1;}
+        [System.Serializable] public class MixConfig {public MixEntry[] clips;}
 #if UNITY_WEBGL && !UNITY_EDITOR
         [System.Runtime.InteropServices.DllImport("__Internal")] static extern void TripleMazePulse(int duration);
 #endif
         void Awake()
         {
-            effects=new AudioSource[8];for(int i=0;i<effects.Length;i++){effects[i]=gameObject.AddComponent<AudioSource>();effects[i].playOnAwake=false;}music=gameObject.AddComponent<AudioSource>();music.loop=true;music.volume=.075f;
+            bool legacyMuted=PlayerPrefs.GetInt("TripleMaze.Muted",0)==1;
+            MusicVolume=Mathf.Clamp01(PlayerPrefs.GetFloat("TripleMaze.MusicVolume",legacyMuted?0:1));
+            EffectsVolume=Mathf.Clamp01(PlayerPrefs.GetFloat("TripleMaze.EffectsVolume",legacyMuted?0:1));
+            effects=new AudioSource[8];for(int i=0;i<effects.Length;i++){effects[i]=gameObject.AddComponent<AudioSource>();effects[i].playOnAwake=false;effects[i].volume=EffectsVolume;}
+            music=gameObject.AddComponent<AudioSource>();music.playOnAwake=false;music.loop=true;
             foreach(var key in new[]{"tap","pick","slide","land","match","blocked","win","lose","hint-sound","ambience","chain","voice-good","voice-great","voice-perfect","voice-excellent","fireworks"})clips[key]=Resources.Load<AudioClip>("Polish/"+key);
-            muted=PlayerPrefs.GetInt("TripleMaze.Muted",0)==1;music.clip=clips["ambience"];music.mute=muted;if(music.clip)music.Play();
+            var config=Resources.Load<TextAsset>("Polish/AudioMix");
+            if(config)try{var mix=JsonUtility.FromJson<MixConfig>(config.text);if(mix?.clips!=null)foreach(var entry in mix.clips)if(entry!=null && entry.key!=null)gains[entry.key]=Mathf.Clamp01(entry.gain);}catch(System.Exception error){Debug.LogWarning("AudioMix 配置无效："+error.Message);}
+            music.clip=clips["ambience"];ApplyVolumes();if(music.clip)music.Play();
         }
-        public void Toggle(){muted=!muted;music.mute=muted;foreach(var source in effects)source.mute=muted;PlayerPrefs.SetInt("TripleMaze.Muted",muted?1:0);}
+        float Gain(string key)=>gains.TryGetValue(key,out var value)?value:1;
+        void ApplyVolumes(){music.volume=.075f*MusicVolume*Gain("ambience");foreach(var source in effects)source.volume=EffectsVolume;}
+        public void SetMusicVolume(float value){MusicVolume=Mathf.Clamp01(value);ApplyVolumes();PlayerPrefs.SetFloat("TripleMaze.MusicVolume",MusicVolume);}
+        public void SetEffectsVolume(float value){EffectsVolume=Mathf.Clamp01(value);ApplyVolumes();PlayerPrefs.SetFloat("TripleMaze.EffectsVolume",EffectsVolume);}
+        public void SaveVolumes()=>PlayerPrefs.Save();
         public void Play(string key,float volume=.4f,float pitch=1)
-        {if(muted || !clips.TryGetValue(key,out var clip) || !clip)return;if(!music.isPlaying && music.clip)music.Play();var source=effects[voice++%effects.Length];source.pitch=pitch;source.PlayOneShot(clip,volume);}
+        {if(EffectsVolume<=0 || !clips.TryGetValue(key,out var clip) || !clip || Gain(key)<=0)return;if(!music.isPlaying && music.clip)music.Play();var source=effects[voice++%effects.Length];source.pitch=pitch;source.PlayOneShot(clip,volume*Gain(key));}
         public void Haptic(bool match=false)
         {
 #if UNITY_WEBGL && !UNITY_EDITOR
-            if(!muted)TripleMazePulse(match?20:8);
+            if(!Muted)TripleMazePulse(match?20:8);
 #elif UNITY_ANDROID && !UNITY_EDITOR
-            if(muted)return;
+            if(Muted)return;
             try{using(var player=new AndroidJavaClass("com.unity3d.player.UnityPlayer"))using(var activity=player.GetStatic<AndroidJavaObject>("currentActivity"))using(var vibrator=activity.Call<AndroidJavaObject>("getSystemService","vibrator"))using(var version=new AndroidJavaClass("android.os.Build$VERSION")){if(version.GetStatic<int>("SDK_INT")>=26){using(var effect=new AndroidJavaClass("android.os.VibrationEffect"))using(var pulse=effect.CallStatic<AndroidJavaObject>("createOneShot",match?22L:9L,match?65:35))vibrator.Call("vibrate",pulse);}else vibrator.Call("vibrate",match?22L:9L);}}catch(System.Exception){}
 #endif
         }

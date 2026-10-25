@@ -16,6 +16,8 @@ namespace TripleMaze
         public string description = "";
         public int gridWidth = 10, gridHeight = 12, slotCapacity = 7;
         public bool imageFilled;
+        // PNG travels with the level and its recipe, including exported JSON levels.
+        public string sourceImagePng = "";
         public List<ArrowData> initialSegments = new List<ArrowData>();
         public List<Color> colorPalette = new List<Color>();
         public LevelData Copy() => JsonUtility.FromJson<LevelData>(JsonUtility.ToJson(this));
@@ -117,7 +119,16 @@ namespace TripleMaze
         {
             exhausted=false;
             if(Validate(level).Count>0) return null;
-            var model=new PuzzleModel(level); var path=new List<int>(); var seen=new HashSet<string>();
+            return Solve(new PuzzleModel(level),budget,out exhausted);
+        }
+        public static List<int> Solve(PuzzleModel current,int budget,out bool exhausted)
+        {
+            exhausted=false;
+            if(current==null || current.State==RoundState.Lost || Validate(current.Level).Count>0)return null;
+            var level=current.Level;
+            var model=new PuzzleModel(level,current.Health);
+            model.Removed.UnionWith(current.Removed);model.Tray.AddRange(current.Tray);
+            var path=new List<int>(); var seen=new HashSet<string>();
             int nodes=0; bool limit=false;
             bool Search()
             {
