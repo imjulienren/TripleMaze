@@ -1,45 +1,15 @@
-# TripleMaze
+# TripleMaze WebGL
 
-将箭头解谜与同色三消结合的手机竖屏 Puzzle Demo，使用 Unity 2022.3.62f3 开发。包含首页、游戏页、结果页，以及 30 个图片主题关卡。
+[Play TripleMaze](https://junlinr-cell.github.io/TripleMaze/)
 
-[网页试玩](https://junlinr-cell.github.io/TripleMaze/) | [开发总结](开发总结.md) | [开发备忘录](开发备忘录.md)
+A portrait arrow-and-triple-match puzzle with 50 image-based levels. Every fifth level is HARD, with an opening cue and a badge on the level and result screens. The player interface is in English and uses Nunito. A new session starts at Level 1.
 
-**版本说明：当前仓库工程已更新，网页仍使用此前导出的 WebGL 文件。最新关卡、手感和通关原图表现需要重新导出 WebGL 后才能上线，不能以当前试玩链接代表最新工程效果。**
+The campaign has 40 normal levels with 66–99 arrows and 10 HARD levels with 114–147 arrows. Difficulty follows a varied five-level rhythm. See `50-level-design.csv` for the measured design values. Depth counts distinct direct and indirect blockers, following the ArrowSmash reference definition.
 
-## 玩法
+## Publishing
 
-- 点击箭头，它会沿箭头尖端方向向外移动。能否移出取决于点击时前方有没有其他箭头遮挡。
-- 成功移出的箭头进入棋盘上方的七格收集栏，同色三枚自动消除；相近深浅色已在关卡制作时归并为同一消除类别。
-- 点击被挡住的箭头会产生碰撞回弹，并扣掉一颗生命星。每关初始三颗，扣完即失败；收集栏填满且不能通过三消腾出空间也会失败。判定时先消除，再检查槽满。
-- 清空所有箭头及收集栏即可胜利。结算星星按剩余生命显示，失败统一显示三颗空星。
-- 支持提示、撤回、重试、下一关，以及棋盘缩放和拖动。提示优先推荐能移出且能补齐收集栏颜色的箭头，不保证完整通关；撤回不返还碰撞损失的生命。
+`TripleMaze_WebGL` contains the 2026-10-26 Unity export. The release build completed with zero errors and zero warnings. GitHub Actions runs `node scripts/prepare-pages.mjs` to decode Brotli files for GitHub Pages while preserving portrait browser layout.
 
-玩法的取舍是同时安排“解除遮挡的顺序”和“收集颜色的顺序”。没有倒计时；每次重新启动默认从第 1 关开始，不保存关卡进度。音乐和音效可以在设置中分别调整。
+Unity source is maintained separately in the private `junlinr-cell/TripleMaze_Unity` repository. The web update replaces the exported player and delivery notes; it does not update the historical Unity files in this web repository.
 
-## 当前体验与关卡
-
-箭头以匀速向外移动，支持连续点击、多支同时飞出；成功点击后立即腾出占位。尖端触边时，上方收集栏的同色图标原地弹出，箭身继续离场，保留三消动画，不再播放从边界飞向收集栏的色块。加入了拖尾、碰撞反馈、连续三消字图与语音。
-
-当前 30 关由 24 个图片主题和 6 个进阶变体组成，每关 102–114 枚箭头。关卡制作从图片轮廓和配色出发，以遮挡关系和颜色顺序组织挑战；近似色合并，避免肉眼相近却不能互消。详细清单和生成配方见 [当前关卡资料](Docs/BalancedCampaign30/README.md)。
-
-胜利后等待操作动画完成，棋盘恢复全图视角，留下的格点逐渐展开成原图颜色并浮现完整图片，停留后进入结算。无底图的旧关卡使用箭头配色形成方格图案。
-
-## 打开工程与工具
-
-使用 Unity 2022.3.62f3 打开仓库，场景为 `Assets/Scenes/TripleMaze.unity`。
-
-Unity 的 `TripleMaze` 菜单提供关卡编辑器、图片与难度生成器、游戏工作台；工具栏支持手动选关。图片生成工具支持读取轮廓和颜色、画笔与圈选、生成候选、校验及保存配方。
-
-[游戏工作台](Tools/Workbench/README.md)可在浏览器中调整界面参数、试听音效和应用音频配置。它是本地预览工具，不能替代 Unity 实际渲染验收。
-
-## 目录与发布
-
-- `Assets/`、`Packages/`、`ProjectSettings/`：当前 Unity 工程。
-- `TripleMaze_WebGL/`：已有网页导出，尚未同步最新工程。
-- `Tools/Workbench/`：本地界面与音效工作台。
-- `Docs/`：关卡配方、素材来源和历史实现记录；旧版规则以本 README、开发备忘录及当前工程为准。
-- `.github/workflows/pages.yml`：推送后自动发布现有 WebGL 导出，不会自动编译 Unity 工程。
-
-重新导出后运行 `node scripts/prepare-pages.mjs` 可生成适合静态托管的 `_site/`。发布流程自动解压 Brotli 构建文件，避免依赖自定义响应头。
-
-具体游戏效果由人工验收。历史帧率测量来自 Mac 上的 Unity 编辑器，不能等同于手机或网页性能，也不能表述为稳定 60 帧。
+Development notes are in `开发总结.md` and `开发备忘录.md`. Font and image attribution files are in `licenses/`. The last user instruction stopped further runtime checks; full mobile playtesting and performance remain for manual review.
