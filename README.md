@@ -1,15 +1,44 @@
-# TripleMaze WebGL
+# TripleMaze
 
-[Play TripleMaze](https://junlinr-cell.github.io/TripleMaze/)
+一款结合箭头解谜与同色三消的休闲益智游戏。观察箭头之间的遮挡，规划移出的顺序，在有限的收集空间内凑齐同色三消，逐步解开整幅图案。
 
-A portrait arrow-and-triple-match puzzle with 50 image-based levels. Every fifth level is HARD, with an opening cue and a badge on the level and result screens. The player interface is in English and uses Nunito. A new session starts at Level 1.
+**[点击在线试玩](https://junlinr-cell.github.io/TripleMaze/)**
 
-The campaign has 40 normal levels with 66–99 arrows and 10 HARD levels with 114–147 arrows. Difficulty follows a varied five-level rhythm. See `50-level-design.csv` for the measured design values. Depth counts distinct direct and indirect blockers, following the ArrowSmash reference definition.
+游戏采用手机竖屏布局，包含 50 个图片主题关卡。游戏内界面为英文，以下为中文玩法说明。
 
-## Publishing
+## 怎么玩
 
-`TripleMaze_WebGL` contains the 2026-10-26 Unity export. The release build completed with zero errors and zero warnings. GitHub Actions runs `node scripts/prepare-pages.mjs` to decode Brotli files for GitHub Pages while preserving portrait browser layout.
+1. **观察方向，点击箭头。** 箭头会朝尖端指向的方向移出；前方有其他箭头时，会发生碰撞并弹回。
+2. **收集颜色，凑齐三枚。** 成功移出的箭头进入棋盘上方的七格收集栏，同色三枚自动消除，腾出位置。
+3. **安排顺序，解开遮挡。** 移走一支箭头，可能为其他箭头打开通路。既要考虑先移哪一支，也要考虑接下来收集什么颜色。
+4. **清空棋盘，揭晓图片。** 所有箭头移出且收集栏清空后通关，棋盘会逐渐还原出关卡对应的图片。
 
-Unity source is maintained separately in the private `junlinr-cell/TripleMaze_Unity` repository. The web update replaces the exported player and delivery notes; it does not update the historical Unity files in this web repository.
+## 胜负规则
 
-Development notes are in `开发总结.md` and `开发备忘录.md`. Font and image attribution files are in `licenses/`. The last user instruction stopped further runtime checks; full mobile playtesting and performance remain for manual review.
+- 每关有 **三颗生命星**。点击被阻挡的箭头会损失一颗，生命耗尽则失败。
+- 收集栏最多容纳 **七枚**。新收集的箭头会先结算三消，若结算后仍占满七格，则挑战失败。
+- 清空棋盘和收集栏即可获胜，结算星数取决于剩余生命；失败显示三颗空星。
+- 没有倒计时，可以慢慢观察，再决定下一步。
+
+## 操作与辅助功能
+
+- **提示（Hint）**：高亮一支可以移出的箭头，优先选择能补齐收集栏颜色的目标。
+- **撤回（Undo）**：撤销上一次成功收集，重新安排顺序；不会恢复碰撞损失的生命。
+- **缩放与拖动**：放大查看密集区域，拖动棋盘寻找目标。
+- **设置（Settings）**：分别调节音乐与音效，也可以重新开始当前关卡或返回首页。
+
+每次重新启动游戏默认从第 1 关开始。
+
+## 关卡与体验
+
+50 关按五关一组安排节奏，**每五关有一关困难关（HARD）**，进入时会有提示，关卡与结算界面也会显示标识。普通关与困难关在箭头数量和遮挡关系上有所区别，让观察、规划与消除交替推进。
+
+关卡以图片的轮廓和颜色为基础。随着箭头逐渐移出，玩家会一步步拆解图案，最后通过原图显现获得完整的通关反馈。
+
+箭头支持连续点击、多支同时移出，搭配碰撞回弹、拖尾、三消动画和连击反馈，让操作保持连贯。小技巧是先留意收集栏里已有的颜色，尽量凑齐一组，再引入更多新颜色。
+
+## 关于项目
+
+本项目通过与 AI 持续沟通、实现和迭代完成，使用 Unity 开发并导出为网页版本。开发过程见 [开发总结](开发总结.md)，需求与改动记录见 [开发备忘录](开发备忘录.md)。字体和图片来源说明位于 `licenses/`。
+
+本仓库用于网页试玩发布，当前 Unity 源工程另行维护。手机上的完整关卡体验和实际性能仍待人工验收。
