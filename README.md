@@ -18,9 +18,14 @@ TripleMaze 将箭头解谜与同色三消放进同一个棋盘。每次点击都
 
 <table>
   <tr>
-    <td width="33%"><img src="docs/screenshots/game-1.png" alt="第 1 关游戏实况" width="100%"></td>
-    <td width="33%"><img src="docs/screenshots/game-2.png" alt="第 2 关游戏实况" width="100%"></td>
-    <td width="33%"><img src="docs/screenshots/game-3.png" alt="第 9 关游戏实况" width="100%"></td>
+    <td width="33%"><img src="docs/screenshots/game-1.png" alt="解谜中：移出箭头，安排三消顺序" width="100%"></td>
+    <td width="33%"><img src="docs/screenshots/game-2.png" alt="原图揭晓：清空箭头后还原图片" width="100%"></td>
+    <td width="33%"><img src="docs/screenshots/game-3.png" alt="通关结算：按剩余生命获得星星" width="100%"></td>
+  </tr>
+  <tr>
+    <td align="center">解谜中</td>
+    <td align="center">原图揭晓</td>
+    <td align="center">通关结算</td>
   </tr>
 </table>
 
@@ -28,7 +33,7 @@ TripleMaze 将箭头解谜与同色三消放进同一个棋盘。每次点击都
 
 关卡从图片的轮廓与颜色出发，让箭头组成不同的图案。随着棋盘逐渐清空，玩家完成的不只是消除，也是在拆解一幅图形谜题。胜利后，棋盘会逐渐还原对应的图片，为解谜过程留下一个完整的收尾。
 
-目前包含 **50 关**，每五关安排一关 **困难关（HARD）**。不同的箭头数量与遮挡关系带来节奏变化，让普通关的推进与困难关的规划交替出现。
+目前包含 **30 关**，每十关安排一关 **困难关（HARD）**。不同的箭头数量与遮挡关系带来节奏变化，让普通关的推进与困难关的规划交替出现。
 
 ## 连续操作，也能停下来想一想
 
@@ -43,10 +48,6 @@ TripleMaze 将箭头解谜与同色三消放进同一个棋盘。每次点击都
 每关有三颗生命星，点击被阻挡的箭头会扣掉一颗。生命耗尽，或三消结算后收集栏仍占满七格，挑战失败。
 
 清空棋盘与收集栏即可通关，结算星数取决于剩余生命。失败后可以重试，成功后继续下一关。
-
-<p align="center">
-  <img src="docs/screenshots/result.png" alt="三星通关结算实况" width="280">
-</p>
 
 ## 关于作品
 
