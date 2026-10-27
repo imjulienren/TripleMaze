@@ -1,1 +1,0 @@
-{"name": "TripleMaze.Tests", "references": ["TripleMaze.Runtime", "TripleMaze.Editor"], "includePlatforms": ["Editor"], "optionalUnityReferences": ["TestAssemblies"]}
