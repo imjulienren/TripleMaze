@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-us">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>TripleMaze</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Unity WebGL Player | TripleMaze</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
   </head>
@@ -58,11 +57,11 @@
       }
 
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/TripleMaze_WebGL.loader.js?v=campaign50-20261026";
+      var loaderUrl = buildUrl + "/TripleMaze_webgl.loader.js";
       var config = {
-        dataUrl: buildUrl + "/TripleMaze_WebGL.data.br?v=campaign50-20261026",
-        frameworkUrl: buildUrl + "/TripleMaze_WebGL.framework.js.br?v=campaign50-20261026",
-        codeUrl: buildUrl + "/TripleMaze_WebGL.wasm.br?v=campaign50-20261026",
+        dataUrl: buildUrl + "/TripleMaze_webgl.data.br",
+        frameworkUrl: buildUrl + "/TripleMaze_webgl.framework.js.br",
+        codeUrl: buildUrl + "/TripleMaze_webgl.wasm.br",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "TripleMaze Demo",
         productName: "TripleMaze",
@@ -104,8 +103,8 @@
       } else {
         // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
 
-        canvas.style.width = "100%";
-        canvas.style.height = "100%";
+        canvas.style.width = "720px";
+        canvas.style.height = "1280px";
       }
 
       loadingBar.style.display = "block";

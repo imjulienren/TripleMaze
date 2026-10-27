@@ -2,7 +2,7 @@ import { cpSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, write
 import { brotliDecompressSync } from 'node:zlib';
 import { resolve, join } from 'node:path';
 
-const source = resolve('TripleMaze_WebGL');
+const source = resolve('TripleMaze_webgl');
 const output = resolve('_site');
 if (!existsSync(join(source, 'index.html'))) throw new Error('Missing WebGL export');
 rmSync(output, { recursive: true, force: true });
@@ -19,9 +19,9 @@ for (const name of readdirSync(build)) {
   console.log(`${name}: ${decoded.length} bytes decoded`);
 }
 const index = join(output, 'index.html');
-writeFileSync(index, readFileSync(index, 'utf8').replace(/(TripleMaze_WebGL\.(?:data|framework\.js|wasm))\.br/g, '$1'));
+writeFileSync(index, readFileSync(index, 'utf8').replace(/(TripleMaze_webgl\.(?:data|framework\.js|wasm))\.br/g, '$1'));
 writeFileSync(join(output, '.nojekyll'), '');
-for (const file of ['TripleMaze_WebGL.data', 'TripleMaze_WebGL.framework.js', 'TripleMaze_WebGL.wasm', 'TripleMaze_WebGL.loader.js']) {
+for (const file of ['TripleMaze_webgl.data', 'TripleMaze_webgl.framework.js', 'TripleMaze_webgl.wasm', 'TripleMaze_webgl.loader.js']) {
   if (!existsSync(join(build, file))) throw new Error(`Missing ${file}`);
 }
 console.log('GitHub Pages artifact ready in _site');
